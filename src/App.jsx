@@ -12,7 +12,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Background from './components/Background'
 import CustomCursor from './components/CustomCursor'
-import Architecture from './components/Architecture'
+// import Architecture from './components/Architecture'
 import CodeSection from './components/CodeSection'
 import Terminal from './components/Terminal'
 import FloatingContact from './components/FloatingContact'
@@ -31,7 +31,7 @@ export default function App() {
         <div className="global-loader" aria-live="polite" aria-label="Loading portfolio">
           <div className="loader-shell">
             <div className="loader-mark">&lt; / &gt;</div>
-            <div className="loader-name">SHIVOM</div>
+            <div className="loader-name">Ankit Mandliya</div>
             <div className="loader-bar">
               <span />
             </div>
@@ -50,7 +50,7 @@ export default function App() {
         <Services />
         <Projects />
         <Experience />
-        <Architecture />
+        {/* <Architecture /> */}
         <CodeSection />
         <Testimonials />
         <Contact />

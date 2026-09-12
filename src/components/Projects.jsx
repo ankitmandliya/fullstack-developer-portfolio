@@ -83,10 +83,6 @@ export default function Projects() {
                         <ExternalLink size={14} />
                         Live demo
                       </a>
-                      <a href={project.githubUrl} className="project-link" target="_blank" rel="noreferrer">
-                        <Github size={14} />
-                        GitHub
-                      </a>
                     </div>
                   </div>
                 </motion.div>

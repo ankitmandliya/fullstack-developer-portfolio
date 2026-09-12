@@ -1,25 +1,34 @@
-// Placeholder testimonials — swap these for real client quotes once you have them.
-
 export const testimonials = [
   {
-    name: 'Priya Nair',
-    role: 'Founder, Northside Studio',
+    name: 'Anil Singh Rajput',
+    role: 'Founder, Shivom Group',
     quote:
-      "Ankit rebuilt our site from scratch and it finally loads the way it should. Bookings picked up within the first month.",
-    image: '',
+      "We needed our field app, website, and back-end running as one system instead of three vendors pointing fingers at each other. Ankit built all three, and our team finally works off a single dashboard.",
+    image: 'https://shivomgroup.com/assets/legacy/Anilsir.png',
+    service: 'Android & iOS app + website + ERP',
   },
   {
-    name: 'Daniel Ortiz',
-    role: 'Owner, Field & Forage',
+    name: 'Abhishek Rana',
+    role: 'Owner, Dizytals',
     quote:
-      'He handled the Shopify build and the ad campaigns together, so nothing fell through the gap between developer and marketer.',
+      'He handled our Shopify build and the ad campaigns together, so nothing fell through the gap between developer and marketer — our cost per order finally makes sense.',
     image: '',
+    service: 'Shopify + Ads',
   },
   {
-    name: 'Sara Whitfield',
-    role: 'Practice Manager, Harlow Dental',
+    name: 'Shubham Singh',
+    role: 'Owner, Giri Naturals',
     quote:
-      "Our local search ranking improved within weeks and he explained every change in plain terms, no jargon.",
+      "Our local search ranking improved within weeks of the new site going live, and every change came with a plain explanation of what it meant for orders — no jargon.",
     image: '',
+    service: 'Website + Local SEO + Ads',
+  },
+  {
+    name: 'Ayushi Aggarwal',
+    role: 'Owner, Giftlogy',
+    quote:
+      "Customers started finding us through local search within weeks of launch, and the ad spend finally turned into actual orders instead of just clicks.",
+    image: '',
+    service: 'Website + Local SEO + Ads',
   },
 ]

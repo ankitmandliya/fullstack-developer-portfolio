@@ -112,10 +112,10 @@ export default function Contact() {
                   <label htmlFor="budget">Budget (optional)</label>
                   <select id="budget" value={values.budget} onChange={handleChange('budget')}>
                     <option value="">Select a range</option>
-                    <option value="< $1,000">Under $1,000</option>
-                    <option value="$1,000 – $5,000">$1,000 – $5,000</option>
-                    <option value="$5,000 – $15,000">$5,000 – $15,000</option>
-                    <option value="$15,000+">$15,000+</option>
+                    <option value="< 10000"> 10,000</option>
+                    <option value="10000 – 50000"> 10,000 – 50,000</option>
+                    <option value="50000 – 150000"> 50,000 – 150,000</option>
+                    <option value="150000+"> 150,000+</option>
                   </select>
                 </div>
               </div>
@@ -138,12 +138,7 @@ export default function Contact() {
                 </div>
               )}
 
-              {!siteConfig.formEndpoint && (
-                <div className="form-status form-status-note">
-                  This form isn't wired to a backend yet. Add a Formspree or EmailJS endpoint in
-                  src/data/config.js — see the README for the two-minute setup.
-                </div>
-              )}
+              
             </form>
           </div>
         </div>
