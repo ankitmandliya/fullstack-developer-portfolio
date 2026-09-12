@@ -4,31 +4,32 @@
 export const siteConfig = {
   name: 'Ankit Mandliya',
   firstName: 'Ankit',
-  role: 'Web Developer & Digital Marketer',
+  role: 'Digital Engineer',
   location: 'Pune, India',
   tagline: 'Available for freelance projects',
   heroDescription:
-    "I build fast, modern websites and help businesses grow online through performance-focused digital marketing.",
+    'I build fast, modern websites and help businesses grow online through performance-focused digital marketing.',
   aboutDescription:
-    "I'm a full-stack developer and digital marketer who partners with founders and small businesses to launch websites that load fast, convert well, and are easy to find. On the marketing side, I run the campaigns and SEO work that get the right people to show up once it's live.",
+    'I build scalable digital experiences by combining engineering, intelligent automation and modern product thinking. My focus is turning complex business requirements into reliable software, AI-powered workflows and digital systems that are built to perform.',
 
-  email: '[YOUR EMAIL]',
-  phone: '[YOUR PHONE / WHATSAPP NUMBER]',
-  whatsappLink: 'https://wa.me/[YOUR NUMBER]',
+  email: 'mandliya.ankit@gmail.com',
+  phone: '7415587271',
+  whatsappNumber: '7415587271',
+  whatsappLink: 'https://wa.me/917415587271',
 
   socials: {
-    linkedin: '[YOUR LINKEDIN URL]',
-    github: '[YOUR GITHUB URL]',
-    instagram: '[YOUR INSTAGRAM URL]',
-    email: 'mailto:[YOUR EMAIL]',
+    linkedin: 'https://www.linkedin.com/in/ankit-mandliya/',
+    github: '',
+    instagram: '',
+    email: 'mailto:mandliya.ankit@gmail.com',
   },
 
   stats: [
-    { label: 'Years experience', value: '8+' },
-    { label: 'Projects shipped', value: '40+' },
-    { label: 'Happy clients', value: '25+' },
-    { label: 'Availability', value: 'Worldwide' },
+    { label: 'Projects', value: 'Selected' },
+    { label: 'Focus', value: 'AI + Web' },
+    { label: 'Approach', value: 'Product' },
+    { label: 'Status', value: 'Available' },
   ],
 
-  formEndpoint: '', // paste a Formspree or EmailJS endpoint here — see README
+  formEndpoint: '',
 }

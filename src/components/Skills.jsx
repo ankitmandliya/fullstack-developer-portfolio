@@ -4,6 +4,7 @@ import SectionReveal from './SectionReveal'
 export default function Skills() {
   const buildGroups = skillGroups.filter((g) => g.group === 'build')
   const growGroups = skillGroups.filter((g) => g.group === 'grow')
+  const marqueeItems = ['React', 'Laravel', 'Node.js', 'Python', 'MySQL', 'AWS', 'SEO', 'UI Systems', 'Docker']
 
   return (
     <section id="skills" className="section">
@@ -13,7 +14,19 @@ export default function Skills() {
           <h2 className="section-title">What I build with, what I grow with</h2>
         </SectionReveal>
 
-        <SectionReveal className="skills-columns" delay={0.05}>
+        <SectionReveal className="skills-marquee-wrap" delay={0.05}>
+          <div className="tech-marquee" aria-label="Technology stack">
+            <div className="tech-marquee-track">
+              {[...marqueeItems, ...marqueeItems].map((item, index) => (
+                <span className="tech-marquee-item" key={`${item}-${index}`}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </SectionReveal>
+
+        <SectionReveal className="skills-columns" delay={0.08}>
           <div className="skills-column skills-column-build">
             <div className="skills-column-heading">
               <span className="skills-column-heading-dot" aria-hidden="true" />

@@ -1,13 +1,21 @@
-import { Github, Linkedin, Instagram, Mail } from 'lucide-react'
+import { ArrowRight, Github, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
-const links = [
+const exploreLinks = [
+  { label: 'Home', id: 'home' },
   { label: 'About', id: 'about' },
-  { label: 'Skills', id: 'skills' },
   { label: 'Services', id: 'services' },
   { label: 'Projects', id: 'projects' },
-  { label: 'Experience', id: 'experience' },
   { label: 'Contact', id: 'contact' },
+]
+
+const expertise = ['AI & Automation', 'Software Engineering', 'Web Development', 'E-commerce', 'Cloud & DevOps', 'Digital Growth']
+const connectLinks = [
+  { label: 'LinkedIn', href: siteConfig.socials.linkedin || '#', icon: Linkedin },
+  { label: 'GitHub', href: siteConfig.socials.github || '#', icon: Github },
+  { label: 'Instagram', href: siteConfig.socials.instagram || '#', icon: Instagram },
+  { label: 'WhatsApp', href: siteConfig.whatsappLink || '#', icon: MessageCircle },
+  { label: 'Email', href: siteConfig.socials.email || '#', icon: Mail },
 ]
 
 export default function Footer() {
@@ -16,24 +24,26 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-top">
-          <div>
+
+        <div className="footer-grid">
+          <div className="footer-brand">
             <div className="navbar-logo">
               <span className="navbar-logo-mark">{siteConfig.firstName.charAt(0)}</span>
               {siteConfig.name}
             </div>
-            <p className="footer-desc">{siteConfig.heroDescription}</p>
+            <p className="footer-tag">Digital Engineering</p>
+            <p className="footer-desc">AI • Software • Growth</p>
           </div>
 
           <div>
-            <div className="footer-heading">Navigate</div>
+            <div className="footer-heading">Explore</div>
             <div className="footer-links">
-              {links.map((link) => (
+              {exploreLinks.map((link) => (
                 <a
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={(e) => {
-                    e.preventDefault()
+                    e.preventDefault();
                     scrollTo(link.id)
                   }}
                 >
@@ -44,31 +54,32 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="footer-heading">Elsewhere</div>
-            <div className="footer-socials">
-              <a href={siteConfig.socials.linkedin} className="hero-social-link" aria-label="LinkedIn" target="_blank" rel="noreferrer">
-                <Linkedin size={16} />
-              </a>
-              <a href={siteConfig.socials.github} className="hero-social-link" aria-label="GitHub" target="_blank" rel="noreferrer">
-                <Github size={16} />
-              </a>
-              <a href={siteConfig.socials.instagram} className="hero-social-link" aria-label="Instagram" target="_blank" rel="noreferrer">
-                <Instagram size={16} />
-              </a>
-              <a href={siteConfig.socials.email} className="hero-social-link" aria-label="Email">
-                <Mail size={16} />
-              </a>
+            <div className="footer-heading">Expertise</div>
+            <div className="footer-links">
+              {expertise.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="footer-heading">Connect</div>
+            <div className="footer-links footer-links--social">
+              {connectLinks.map(({ label, href, icon: Icon }) => (
+                <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>
+                  <Icon size={14} />
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
-
-        <hr className="hairline" />
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</span>
           <span className="footer-available">
             <span className="hero-badge-dot" aria-hidden="true" />
-            Available for freelance work
+            Built with React + curiosity.
           </span>
         </div>
       </div>

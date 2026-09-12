@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react'
 import { projects, projectCategories } from '../data/projects'
 import SectionReveal from './SectionReveal'
 
@@ -59,6 +59,10 @@ export default function Projects() {
                         e.currentTarget.nextSibling.style.display = 'flex'
                       }}
                     />
+                    <span className="project-media-overlay" aria-hidden="true">
+                      <span>View project</span>
+                      <ArrowUpRight size={16} />
+                    </span>
                     <span style={{ display: 'none', position: 'absolute', inset: 0, alignItems: 'center', justifyContent: 'center' }}>
                       {project.title}
                     </span>

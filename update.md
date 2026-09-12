@@ -1,561 +1,781 @@
-## Home Page — Premium Motion, Graphics & Interactive Experience
+Ankit Virtual Assistant — Final Chatbot Fixes
 
-Redesign and enhance the **Home Page** of my React 19 portfolio website to make it feel like a **premium, modern, highly interactive portfolio for a technology professional**.
+Objective
 
-The current content and overall brand identity should be preserved, but significantly improve the **visual experience, animations, motion design, hover interactions, graphics, spacing, typography, and overall wow factor**.
+Everything in the current chatbot is working well.
 
-The goal is:
+Do not redesign the chatbot or change the existing futuristic visual language.
 
-> **"This doesn't feel like a normal portfolio — it feels like an interactive tech product."**
+Make only the following fixes:
 
-### 1. Hero Section — Make It Visually Powerful
+Fix the "Unable to send the enquiry right now." submission error.
 
-Create a visually impressive hero section immediately visible when the website loads.
+Reduce the chatbot popup height because it is currently too tall.
 
-Include:
+Make the chatbot's introductory greeting appear ONLY on Step 1.
 
-* Strong headline introducing me as a technology professional.
-* Short professional description.
-* Primary CTA such as "View My Work"
-* Secondary CTA such as "Let's Connect"
-* Existing profile/portfolio content should remain relevant.
-* Add animated visual elements around the hero content.
+Do not repeat the greeting or "Let's get started." text on Steps 2, 3, or 4.
+
+Keep the existing professional "Ankit's Virtual Assistant" personality.
+
+1. FIX EMAIL SUBMISSION ERROR
+
+Current problem:
+
+Unable to send the enquiry right now.
+
+The enquiry submission is failing even though the chatbot flow itself is working.
+
+Requirement
+
+Trace the complete submission flow:
+
+Chatbot
+   ↓
+Form state
+   ↓
+Submit handler
+   ↓
+Frontend API request
+   ↓
+Backend/API endpoint
+   ↓
+Email service
+   ↓
+mandliya.ankit@gmail.com
+
+Find the actual cause of the failure instead of hiding the error.
+
+1.1 Debug the frontend request
+
+Verify:
+
+API endpoint URL
+
+HTTP method
+
+Request body
+
+JSON formatting
+
+Content-Type
+
+Environment variables
+
+Production/development API URL
+
+CORS configuration if applicable
+
+Response parsing
+
+HTTP status handling
+
+Expected request pattern:
+
+const response = await fetch("/api/contact", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(enquiry),
+});
+
+Use the project's existing API endpoint if one already exists.
+
+Do not blindly create a new endpoint if the project already has one.
+
+2. VERIFY BACKEND RESPONSE
+
+The frontend must correctly handle the backend response.
+
+Example:
+
+const data = await response.json();
+
+if (!response.ok) {
+  throw new Error(data?.message || "Unable to send enquiry");
+}
+
+Do not assume every response is successful.
+
+The backend should return a clear success response.
+
+Example:
+
+{
+  "success": true,
+  "message": "Enquiry sent successfully"
+}
+
+On failure:
+
+{
+  "success": false,
+  "message": "Unable to send enquiry"
+}
+
+Use an appropriate HTTP status code.
+
+3. VERIFY EMAIL CONFIGURATION
+
+Make sure the backend email configuration is actually available at runtime.
+
+Required destination:
+
+mandliya.ankit@gmail.com
+
+Verify:
+
+MAIL_HOST=...
+MAIL_PORT=...
+MAIL_USERNAME=...
+MAIL_PASSWORD=...
+MAIL_FROM_ADDRESS=...
+MAIL_FROM_NAME=Ankit Portfolio
+CONTACT_EMAIL=mandliya.ankit@gmail.com
+
+Use the exact environment variable names already expected by the project's backend.
+
+IMPORTANT
+
+Do NOT put email credentials inside React frontend code.
+
+Never use:
+
+VITE_MAIL_PASSWORD
+VITE_SMTP_PASSWORD
+VITE_EMAIL_PASSWORD
+
+Private credentials must remain server-side.
+
+4. VERIFY ENVIRONMENT VARIABLES
+
+If using Vite for frontend configuration, remember:
+
+VITE_*
+
+variables are exposed to the browser.
+
+Therefore:
+
+Allowed
+
+Public configuration such as:
+
+VITE_API_URL=...
+
+NOT allowed
+
+VITE_SMTP_PASSWORD=...
+VITE_EMAIL_PASSWORD=...
+VITE_EMAIL_API_SECRET=...
+
+Email credentials must stay on the backend/serverless function.
+
+5. CHECK DEVELOPMENT VS PRODUCTION
+
+Make sure the frontend is calling the correct backend endpoint.
+
+For example, avoid accidentally calling:
+
+http://localhost:...
+
+from the deployed website.
+
+Use the project's existing environment configuration.
+
+Example:
+
+VITE_API_URL=/api
+
+or the appropriate deployed API URL.
+
+Do not hard-code localhost URLs in production code.
+
+6. ERROR HANDLING
+
+Do not show the generic error immediately for every type of failure.
+
+Use proper error handling.
+
+Example:
+
+try {
+  setIsSubmitting(true);
+
+  const response = await fetch(...);
+
+  const data = await response.json();
+
+  if (!response.ok || !data.success) {
+    throw new Error(data.message || "Unable to send enquiry");
+  }
+
+  setSubmitted(true);
+} catch (error) {
+  console.error("Enquiry submission failed:", error);
+
+  setSubmitError(
+    "We couldn't send your enquiry right now. Please try again."
+  );
+} finally {
+  setIsSubmitting(false);
+}
+
+Keep the detailed error in the developer console, not in the visitor-facing UI.
+
+7. DO NOT LOSE FORM DATA ON FAILURE
+
+If email submission fails:
+
+Keep all entered fields.
+
+Keep selected service.
+
+Keep budget.
+
+Keep additional message.
+
+Allow the visitor to click TRY AGAIN.
+
+Do NOT reset the form after failure.
+
+8. SUCCESS BEHAVIOR
+
+When email submission succeeds:
+
+Show:
+
+Thank you for contacting Ankit.
+
+Then:
+
+Your enquiry has been received successfully. Ankit will get in touch with you shortly.
+
+This should be the final chatbot state.
+
+9. CHATBOT HEIGHT — IMPORTANT
+
+The chatbot popup is currently too tall.
+
+Reduce its height significantly.
+
+Do NOT allow the chatbot to occupy most of the screen.
+
+10. DESKTOP CHATBOT HEIGHT
+
+Use a controlled maximum height.
+
+Recommended:
+
+height: auto;
+max-height: min(620px, calc(100vh - 120px));
+
+If the existing popup is still too tall, reduce to approximately:
+
+max-height: min(560px, calc(100vh - 120px));
+
+The exact value should be chosen based on the existing design.
+
+The goal is a compact premium assistant panel.
+
+11. CHATBOT WIDTH
+
+Keep the current width if it already looks good.
+
+Recommended maximum:
+
+width: min(420px, calc(100vw - 32px));
+
+Do not make it unnecessarily wide.
+
+12. INTERNAL SCROLLING
+
+The chatbot itself should remain compact.
+
+If the content does not fit:
+
+Chatbot shell
+   ↓
+Header
+   ↓
+Scrollable content
+   ↓
+Fixed footer/actions
+
+Do NOT increase the popup height to fit every field.
+
+Instead, make the main content area scrollable.
+
+Recommended structure:
+
+.chatbot {
+  display: flex;
+  flex-direction: column;
+  max-height: min(600px, calc(100vh - 120px));
+}
+
+.chatbot-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.chatbot-footer {
+  flex-shrink: 0;
+}
+
+13. MOBILE CHATBOT HEIGHT
+
+On mobile, prevent the chatbot from becoming excessively tall.
 
 Use:
 
-* Animated gradient backgrounds.
-* Large blurred gradient blobs.
-* Subtle floating particles.
-* Grid/dot background pattern.
-* Moving light streaks.
-* Soft glow effects.
-* Animated borders.
-* Gradient text for selected keywords.
-* Subtle glassmorphism where appropriate.
+max-height: calc(100dvh - 100px);
 
-Do NOT make the hero look overcrowded.
+or an equivalent safe mobile calculation.
 
-The design should remain professional while being visually exciting.
+Do not use a fixed height that causes the chatbot to exceed the viewport.
 
----
+Recommended:
 
-### 2. Add Tech-Oriented Animated Graphics
+width: calc(100vw - 24px);
+max-width: 420px;
 
-Because this is a portfolio of a tech professional, add visual elements that communicate technology.
+The content should scroll internally.
 
-Possible elements:
+14. KEEP CHATBOT HEADER COMPACT
 
-* Floating code snippets.
-* Terminal-style floating card.
-* Animated brackets such as `{ }`, `< />`, `01`, `</>`.
-* Small floating technology badges.
-* Animated nodes and connecting lines.
-* Abstract circuit-board patterns.
-* Developer/AI/cloud/database-inspired graphics.
-* Floating UI windows.
-* Small animated status indicators.
-* Rotating geometric shapes.
+Do not use excessive padding in the header.
 
-These elements should move subtly in the background rather than distracting from the main content.
+Recommended:
 
-Example visual concept:
+padding: 14px 18px;
 
-```text
-                 < CODE />
-                    ✦
-        ┌─────────────────────┐
-        │  npm run build      │
-        │  ✓ Success          │
-        └─────────────────────┘
+or the equivalent spacing already used by the design system.
 
-      ●────────●────────●
-       \       │       /
-        \      │      /
-             TECH
-```
+Keep:
 
-Keep these graphics abstract and premium rather than cartoonish.
+Online indicator
 
----
+Assistant name/title
 
-### 3. Mouse Interaction
+Close button
 
-Add interactive mouse-based effects.
+But reduce empty vertical space.
 
-Examples:
+15. KEEP CHATBOT FORM COMPACT
 
-* Hero background reacts subtly to mouse movement.
-* Gradient glow follows the cursor.
-* Floating elements have subtle parallax movement.
-* Cards slightly respond to cursor position.
-* Interactive spotlight effect follows the mouse.
-* Background particles react subtly to cursor movement.
+Reduce excessive:
 
-The movement should be smooth and lightweight.
+field margins
 
-Avoid excessive movement that could make the page uncomfortable.
+card padding
 
----
+button spacing
 
-### 4. Premium Hover Effects
+section gaps
 
-Add high-quality hover interactions throughout the Home Page.
+textarea height
 
-Buttons:
+heading margins
 
-* Gradient background animation.
-* Subtle scale effect.
-* Glow on hover.
-* Arrow/icon moves slightly.
-* Smooth transition.
+Recommended field spacing:
 
-Project cards:
+gap: 12px;
 
-* Slight lift.
-* Image zoom.
-* Gradient overlay.
-* Border glow.
-* Content moves subtly.
-* Add a small "View Project →" interaction.
+or approximately:
 
-Technology/skill cards:
+margin-bottom: 12px;
 
-* Icon animation.
-* Gradient border.
-* Subtle rotation or floating effect.
-* Background glow.
+Do not create large blank spaces between fields.
 
-Social icons:
+16. STEP 1 GREETING — ONLY STEP 1
 
-* Scale slightly.
-* Rotate very subtly.
-* Glow effect.
-* Smooth color transition.
+This is very important.
 
-Use professional micro-interactions rather than generic CSS hover effects.
+The following greeting:
 
----
+Hello! 👋 Welcome to Ankit's portfolio. I'm Ankit's virtual assistant. I'll collect a few details about your requirement so Ankit can get back to you personally.
 
-### 5. Scroll Animations
+and:
 
-Add polished scroll-based animations across the Home Page.
+Let's get started.
 
-Elements should animate into view using:
+must appear ONLY on Step 1.
 
-* Fade-in.
-* Slide-up.
-* Slight scale.
-* Blur-to-sharp.
-* Staggered animations.
+They must NOT appear on:
 
-For example:
+Step 2
 
-```text
-Heading
-   ↓
-Description
-   ↓
-Buttons
-   ↓
-Technology badges
-```
+Step 3
 
-Each element should appear with a slight delay.
+Step 4
 
-Do not animate everything simultaneously.
+Success state
 
-Use scroll-triggered animations only where they improve the visual hierarchy.
+Error state
 
----
+17. STEP 1 EXACT CONTENT
 
-### 6. Add an Animated "Tech Stack" Visual
+When the chatbot opens, show:
 
-Create a visually attractive technology section.
+Hello! 👋 Welcome to Ankit's portfolio. I'm Ankit's virtual assistant. I'll collect a few details about your requirement so Ankit can get back to you personally.
 
-Instead of simply showing a list of technologies, create interactive technology cards.
+Then:
 
-Example:
+Let's get started.
 
-```text
-     React        Laravel       Node.js
+Then show:
 
-       ◉             ◉             ◉
+STEP 1 OF 4
 
-    Python         Docker        MySQL
-```
+Let's start with your details.
 
-Cards should:
+Full Name *
+[ Enter your full name ]
 
-* Have subtle glass/gradient backgrounds.
-* Animate on hover.
-* Show technology icons.
-* Have animated gradient borders.
-* Slightly float when hovered.
+Email Address *
+[ you@example.com ]
 
-If appropriate, add an animated marquee:
+Contact Number *
+[ Enter your contact number ]
 
-```text
-React  •  Laravel  •  PHP  •  Python  •  Node.js  •  Docker  •  MySQL
-```
+[ NEXT → ]
 
-The marquee should move smoothly and continuously.
+Keep this introduction only inside the Step 1 content.
 
----
+18. STEP 2 SHOULD NOT SHOW THE GREETING
 
-### 7. Add a "Currently Building" / Status Card
+When the user clicks NEXT, remove the Step 1 greeting.
 
-Add a small interactive developer-style card somewhere in the hero or below it.
+Step 2 should start directly with:
+
+STEP 2 OF 4
+
+What service are you looking for?
+
+Select the service that best matches your requirement.
+
+Then show the service cards.
+
+Do NOT show:
+
+Hello! 👋 Welcome to Ankit's portfolio...
+
+Do NOT show:
+
+Let's get started.
+
+19. STEP 3 SHOULD NOT SHOW THE GREETING
+
+Step 3:
+
+STEP 3 OF 4
+
+What is your estimated budget?
+
+This helps Ankit understand the scope you're considering and recommend the right approach.
+
+Then show the budget slider.
+
+No Step 1 greeting.
+
+20. STEP 4 SHOULD NOT SHOW THE GREETING
+
+Step 4:
+
+STEP 4 OF 4
+
+Anything else you'd like Ankit to know?
+
+Share any additional details, goals, references or requirements that may help Ankit understand your project.
+
+Then:
+
+Additional message (optional)
+[ Tell us anything else about your project... ]
+
+No Step 1 greeting.
+
+21. IMPLEMENT GREETING CONDITIONALLY
+
+The greeting should be rendered conditionally based on the active step.
 
 Example:
 
-```text
-┌──────────────────────────────────┐
-│  ● AVAILABLE FOR OPPORTUNITIES   │
-│                                  │
-│  Currently building              │
-│  digital experiences &            │
-│  scalable applications.           │
-│                                  │
-│  <system.status />               │
-└──────────────────────────────────┘
-```
+{currentStep === 1 && (
+  <div className="assistant-intro">
+    <p>
+      Hello! 👋 Welcome to Ankit's portfolio. I'm Ankit's virtual assistant.
+      I'll collect a few details about your requirement so Ankit can get back
+      to you personally.
+    </p>
 
-Add subtle blinking status animation.
+    <p>Let's get started.</p>
+  </div>
+)}
 
-This should feel like a developer dashboard element.
+Do not keep the greeting outside the step-specific rendering.
 
----
+22. DO NOT DUPLICATE INTRO TEXT
 
-### 8. Add Animated Background
+Check the component structure carefully.
 
-Create a premium animated background.
+Avoid this:
 
-Use a combination of:
+<ChatHeader />
 
-* Gradient mesh.
-* Radial gradients.
-* Subtle noise texture if possible.
-* Dot/grid pattern.
-* Floating particles.
-* Soft glowing blobs.
-* Thin animated lines.
+<Intro />
 
-The background should have depth.
+{currentStep === 1 && <StepOne />}
+{currentStep === 2 && <StepTwo />}
 
-Avoid using a simple static gradient.
+if <Intro /> always renders.
 
-Recommended visual direction:
+Instead:
 
-**Dark premium background + vibrant cyan/purple/blue/pink/green accents.**
+<ChatHeader />
 
-The colorful elements should contrast against the darker base.
+{currentStep === 1 && <StepOne />}
+{currentStep === 2 && <StepTwo />}
+{currentStep === 3 && <StepThree />}
+{currentStep === 4 && <StepFour />}
 
----
+Put the greeting inside Step 1.
 
-### 9. Add Section Transitions
+23. STEP TRANSITIONS
 
-Make transitions between Home Page sections visually interesting.
+Keep the existing smooth animation.
 
-Examples:
+When moving:
 
-* Gradient divider.
-* Animated horizontal line.
-* Moving glow.
-* Curved SVG transition.
-* Particle transition.
-* Subtle wave.
+Step 1 → Step 2
+Step 2 → Step 3
+Step 3 → Step 4
 
-Avoid abrupt section changes.
+use a subtle transition.
 
----
+Do not create a long animation that makes the chatbot feel slow.
 
-### 10. Add Interactive Project Preview
+Recommended:
 
-If projects are already present on the Home Page, improve their presentation.
-
-Project cards should include:
-
-* Project image/preview.
-* Project title.
-* Short description.
-* Technologies used.
-* GitHub/demo links.
-* Hover preview.
-* Animated gradient border.
-
-On hover:
-
-```text
-Normal
-   ↓
-Card lifts
-   ↓
-Image zooms slightly
-   ↓
-Gradient overlay appears
-   ↓
-Buttons become visible
-```
-
-Keep it smooth and professional.
-
----
-
-### 11. Add 3D / Depth Effects
-
-Introduce subtle depth without making the website heavy.
-
-Possible effects:
-
-* Perspective cards.
-* 3D tilt on hover.
-* Floating elements.
-* Layered shadows.
-* Glassmorphism.
-* Depth-based parallax.
-
-For example, project cards can slightly tilt based on cursor position.
-
-Do NOT overuse 3D.
-
-The website should still feel fast and professional.
-
----
-
-### 12. Typography
-
-Improve typography hierarchy.
-
-Use:
-
-* Large bold hero typography.
-* Gradient-highlighted keywords.
-* Strong section headings.
-* Comfortable line height.
-* Clear body text.
-
-Example:
-
-```text
-BUILDING
-DIGITAL
-EXPERIENCES.
-```
-
-or:
-
-```text
-I build
-scalable digital
-experiences.
-```
-
-Use typography as a major visual element.
-
----
-
-### 13. Color System
-
-Make the portfolio more colorful while keeping it professional.
-
-Recommended palette direction:
-
-* Deep black / dark navy background.
-* Electric blue.
-* Cyan.
-* Purple.
-* Magenta.
-* Violet.
-* Occasional green accent.
-
-Use gradients intelligently.
-
-Example:
-
-```css
-linear-gradient(
-  135deg,
-  #00f5ff,
-  #6366f1,
-  #a855f7,
-  #ec4899
-)
-```
-
-Do not apply bright colors everywhere.
-
-Use them primarily for:
-
-* Highlights.
-* Borders.
-* Buttons.
-* Icons.
-* Graphics.
-* Hover states.
-* Background glows.
-
----
-
-### 14. Navbar Interaction
-
-Make the navbar feel premium.
-
-Add:
-
-* Transparent/glass background initially.
-* On scroll → slightly blurred background.
-* Smooth shadow/glow.
-* Active navigation indicator.
-* Hover underline animation.
-* Smooth transitions.
-
-The navbar should remain clean and minimal.
-
----
-
-### 15. Loading Animation
-
-Create a short premium loading animation if the application currently has no loader.
-
-Possible concept:
-
-```text
-< / >
-     SHIVOM
-     ──────
-     INITIALIZING...
-```
-
-Use a very short animation.
-
-Do NOT create a long loading screen.
-
----
-
-### 16. Performance Requirements
-
-This is extremely important.
-
-Animations must be:
-
-* Smooth.
-* GPU-friendly.
-* Optimized.
-* Responsive.
-* Lightweight.
-
-Prefer:
-
-* CSS transforms.
-* CSS opacity.
-* requestAnimationFrame when necessary.
-* Framer Motion if already installed.
-* Intersection Observer for scroll animations.
-
-Avoid unnecessarily expensive effects.
-
-Do not introduce huge animation libraries unless required.
-
----
-
-### 17. Responsive Design
-
-The entire experience must work beautifully on:
-
-* Desktop
-* Laptop
-* Tablet
-* Mobile
-
-On mobile:
-
-* Reduce particle count.
-* Reduce large decorative elements.
-* Disable expensive mouse-follow effects.
-* Keep animations subtle.
-* Maintain readable typography.
-* Ensure buttons remain easily tappable.
-* Prevent horizontal scrolling.
-
-The mobile version should feel intentionally designed, not simply compressed.
-
----
-
-### 18. Accessibility
+200–300ms
 
 Respect:
 
-```css
 @media (prefers-reduced-motion: reduce)
-```
 
-When reduced motion is enabled:
+24. BACK BUTTON
 
-* Disable unnecessary animations.
-* Disable parallax.
-* Disable cursor-follow effects.
-* Keep simple fade transitions or no animation.
+Keep:
 
-Maintain:
+← BACK
 
-* Good contrast.
-* Keyboard accessibility.
-* Visible focus states.
-* Semantic HTML.
+on Steps 2–4.
 
----
+When going back:
 
-### 19. Overall Visual Direction
+Preserve all entered information.
 
-The final design should feel inspired by the quality of modern technology/product websites such as:
+Do not show Step 1 greeting unless the visitor is actually back on Step 1.
 
-* Linear
-* Vercel
-* Stripe
-* Framer
-* Raycast
-* Apple
+Return to the correct previous step.
 
-But DO NOT copy their designs.
+25. STEP HEADER
 
-Create an original visual identity for this portfolio.
+Each step should have its own heading.
 
-The result should feel:
+Step 1
 
-**Modern + Futuristic + Colorful + Premium + Technical + Interactive + Professional**
+Let's start with your details.
+
+Step 2
+
+What service are you looking for?
+
+Step 3
+
+What is your estimated budget?
+
+Step 4
+
+Anything else you'd like Ankit to know?
+
+This keeps the chatbot clear without repeating the initial greeting.
+
+26. CHATBOT PERSONALITY
+
+Continue using professional language throughout.
+
+The assistant represents Ankit.
+
+Examples:
+
+Step 2
+
+Please select the service that best matches your requirement.
+
+Step 3
+
+This helps Ankit understand the scope you're considering.
+
+Step 4
+
+Any additional details you share can help Ankit better understand your project.
+
+Success
+
+Thank you for contacting Ankit. Your enquiry has been received successfully. Ankit will get in touch with you shortly.
 
 Avoid:
 
-* Generic portfolio templates.
-* Excessive glassmorphism.
-* Excessive gradients.
-* Excessive animations.
-* Cartoonish graphics.
-* Huge unnecessary 3D objects.
-* Slow page performance.
-* Random decorative elements with no visual purpose.
+Awesome!
+Cool!
+Yay!
+I got you!
 
----
+Keep it professional and warm.
 
-### 20. Important Implementation Rule
+27. FINAL CHATBOT FLOW
 
-Before changing the UI:
+The final experience must be:
 
-1. Inspect the existing React project.
-2. Understand the current Home Page structure.
-3. Preserve existing content, sections, links, routes, and functionality.
-4. Do not remove working functionality.
-5. Reuse existing components where possible.
-6. Only create new components when necessary.
-7. Keep the code clean and modular.
-8. Ensure there are no console errors.
-9. Ensure the production build succeeds.
-10. Ensure all animations work correctly on desktop and mobile.
+CLICK CHAT
+    ↓
+STEP 1
+Greeting
+"Hello! 👋 Welcome to Ankit's portfolio..."
+"Let's get started."
+    ↓
+Full Name
+Email
+Contact Number
+    ↓
+NEXT
+    ↓
+STEP 2
+"What service are you looking for?"
+    ↓
+Select Service
+    ↓
+NEXT
+    ↓
+STEP 3
+"What is your estimated budget?"
+    ↓
+₹10,000 ━━━━━━━●━━━━━━━━ ₹5,00,000
+    ↓
+NEXT
+    ↓
+STEP 4
+"Anything else you'd like Ankit to know?"
+    ↓
+Optional Additional Message
+    ↓
+SUBMIT ENQUIRY
+    ↓
+SENDING...
+    ↓
+Secure API
+    ↓
+mandliya.ankit@gmail.com
+    ↓
+SUCCESS
+    ↓
+"Thank you for contacting Ankit.
+Ankit will get in touch with you shortly."
 
-Most importantly:
+28. FINAL DESIGN REQUIREMENT
 
-**Do not just add random animations. Build a cohesive motion-design system where every animation has a purpose.**
+The chatbot should now be:
 
-The final Home Page should immediately communicate:
+Compact
+Professional
+Futuristic
+Fast
+Easy to use
 
-> **"This person is a serious technology professional who understands modern engineering, design, and user experience."**
+The visitor should never feel that the popup is taking over the screen.
+
+The Step 1 greeting should create the human connection, then disappear as soon as the visitor moves to Step 2.
+
+29. FINAL TEST CHECKLIST
+
+Submission
+
+Submit button works
+
+Correct API endpoint
+
+Correct HTTP method
+
+Correct request body
+
+Correct content type
+
+Backend receives data
+
+Email service receives data
+
+Email arrives at mandliya.ankit@gmail.com
+
+Production environment works
+
+No localhost API in production
+
+No frontend email credentials
+
+Error state works
+
+Retry works
+
+Form data is preserved on failure
+
+Greeting
+
+Greeting appears on Step 1
+
+"Let's get started." appears on Step 1
+
+Greeting disappears on Step 2
+
+Greeting does not appear on Step 3
+
+Greeting does not appear on Step 4
+
+Greeting does not appear on success screen
+
+Popup
+
+Height reduced
+
+Header compact
+
+Internal content scroll enabled
+
+Mobile height constrained
+
+No content gets cut off
+
+Submit buttons remain accessible
+
+No overlap with floating WhatsApp/Support buttons
+
+UX
+
+Back button works
+
+Data persists between steps
+
+Service selection works
+
+Budget slider works
+
+Additional message remains optional
+
+Success message is professional
+
+No console errors
+
+Production build succeeds
