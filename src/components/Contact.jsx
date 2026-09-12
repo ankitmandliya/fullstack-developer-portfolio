@@ -61,8 +61,9 @@ export default function Contact() {
         <div className="contact-panel">
           <div className="contact-grid">
             <div>
-              <h2 className="contact-title">Have a project in mind?</h2>
-              <p className="contact-sub">Let's build something great together.</p>
+              <h2 className="contact-title">Let's build something that moves your business forward.</h2>
+              <p className="contact-sub">Whether you need a modern website, custom web application, React/Laravel development, AI automation or a digital growth solution, let's discuss your requirements.</p>
+              <p className="contact-sub">Available for projects across Indore and clients throughout India.</p>
 
               <div className="contact-direct">
                 <a href={siteConfig.socials.email} className="contact-direct-link">

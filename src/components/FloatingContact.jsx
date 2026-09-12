@@ -185,21 +185,23 @@ export default function FloatingContact() {
 
   return (
     <>
-      <div className="floating-contact">
+      <div className="floating-actions">
         <button
           type="button"
           className="floating-action floating-action--whatsapp"
-          aria-label="Connect on WhatsApp"
+          aria-label="Chat with Ankit on WhatsApp"
           title="Let's connect on WhatsApp"
           onClick={() => window.open(buildWhatsAppUrl(), '_blank', 'noopener,noreferrer')}
         >
-          <span className="wa-mark">WA</span>
+          <svg className="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 3.5A11.7 11.7 0 0 0 12.16 0C5.7 0 .45 5.25.45 11.71c0 2.06.54 4.07 1.56 5.84L.35 24l6.6-1.73a11.7 11.7 0 0 0 5.2 1.25h.01c6.45 0 11.7-5.25 11.7-11.71a11.67 11.67 0 0 0-3.36-8.31ZM12.16 21.5h-.01a9.75 9.75 0 0 1-4.97-1.36l-.36-.21-3.92 1.03 1.05-3.82-.23-.39a9.74 9.74 0 0 1-1.49-5.04C2.23 6.33 6.68 1.88 12.17 1.88c2.66 0 5.16 1.04 7.04 2.93a9.85 9.85 0 0 1 2.91 7.01c0 5.49-4.47 9.68-9.96 9.68Zm5.45-7.3c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-1.75-.87-2.9-1.55-4.06-3.52-.31-.54.31-.5.88-1.67.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.06 2.85 1.21 3.05c.15.2 2.08 3.18 5.04 4.46 1.87.81 2.6.88 3.53.74.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.12-.27-.2-.57-.34Z" />
+          </svg>
         </button>
 
         <button
           type="button"
           className="floating-action floating-action--support"
-          aria-label={isOpen ? 'Close support chat' : 'Open support chat'}
+          aria-label={isOpen ? "Close Ankit's virtual assistant" : "Open Ankit's virtual assistant"}
           title="Support"
           onClick={() => {
             setSubmitted(false)

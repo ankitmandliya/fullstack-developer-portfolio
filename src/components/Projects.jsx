@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react'
+import { ExternalLink, ArrowUpRight } from 'lucide-react'
 import { projects, projectCategories } from '../data/projects'
 import SectionReveal from './SectionReveal'
 
@@ -52,7 +52,7 @@ export default function Projects() {
                   <div className="project-media">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={project.alt || `${project.title} project`}
                       loading="lazy"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none'

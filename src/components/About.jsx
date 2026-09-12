@@ -59,13 +59,13 @@ export default function About() {
             <h2 className="section-title about-title">ENGINEERING IDEAS INTO DIGITAL REALITY.</h2>
 
             <p className="lede">
-              I build scalable digital experiences by combining engineering, intelligent automation
-              and modern product thinking. My focus is turning complex business requirements into
-              reliable software, AI-powered workflows and digital systems that are built to perform.
+              I’m Ankit Mandliya, a full stack developer and digital engineering professional working
+              with businesses, startups and teams across Indore and throughout India.
             </p>
 
             <p>
-              {siteConfig.aboutDescription}
+              {siteConfig.aboutDescription} My work includes modern web development, React and Laravel
+              applications, PHP backends, APIs, databases, AI-powered applications and business automation.
             </p>
 
             <div className="about-pill-row" aria-label="Professional focus areas">

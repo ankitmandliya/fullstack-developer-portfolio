@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ankit Mandliya portfolio</title>
+  <desc id="desc">Full stack development and digital engineering by Ankit Mandliya.</desc>
+  <rect width="1200" height="630" fill="#070b14"/>
+  <path d="M0 500h1200M0 420h1200M120 0v630M260 0v630M400 0v630M540 0v630M680 0v630M820 0v630M960 0v630M1100 0v630" stroke="#68e1ff" stroke-opacity=".08"/>
+  <circle cx="930" cy="180" r="210" fill="#b18cff" fill-opacity=".12"/>
+  <circle cx="930" cy="180" r="130" fill="#68e1ff" fill-opacity=".08"/>
+  <text x="90" y="240" fill="#68e1ff" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">ANKIT MANDLIYA</text>
+  <text x="90" y="330" fill="#edf3ff" font-family="Arial, sans-serif" font-size="64" font-weight="700">Full Stack Developer</text>
+  <text x="90" y="390" fill="#9aa7bc" font-family="Arial, sans-serif" font-size="28">Digital engineering, AI and modern web applications</text>
+</svg>

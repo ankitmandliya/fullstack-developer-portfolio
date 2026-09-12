@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react'
+import { Linkedin, Mail, MessageCircle } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 const exploreLinks = [
@@ -6,14 +6,13 @@ const exploreLinks = [
   { label: 'About', id: 'about' },
   { label: 'Services', id: 'services' },
   { label: 'Projects', id: 'projects' },
+  { label: 'Testimonials', id: 'testimonials' },
   { label: 'Contact', id: 'contact' },
 ]
 
-const expertise = ['AI & Automation', 'Software Engineering', 'Web Development', 'E-commerce', 'Cloud & DevOps', 'Digital Growth']
+const expertise = ['Website Development', 'React Development', 'Laravel Development', 'AI Solutions', 'Automation', 'Digital Growth']
 const connectLinks = [
   { label: 'LinkedIn', href: siteConfig.socials.linkedin || '#', icon: Linkedin },
-  { label: 'GitHub', href: siteConfig.socials.github || '#', icon: Github },
-  { label: 'Instagram', href: siteConfig.socials.instagram || '#', icon: Instagram },
   { label: 'WhatsApp', href: siteConfig.whatsappLink || '#', icon: MessageCircle },
   { label: 'Email', href: siteConfig.socials.email || '#', icon: Mail },
 ]
@@ -31,8 +30,8 @@ export default function Footer() {
               <span className="navbar-logo-mark">{siteConfig.firstName.charAt(0)}</span>
               {siteConfig.name}
             </div>
-            <p className="footer-tag">Digital Engineering</p>
-            <p className="footer-desc">AI • Software • Growth</p>
+            <p className="footer-tag">Full Stack Developer · Digital Engineering</p>
+            <p className="footer-desc">Serving businesses across India</p>
           </div>
 
           <div>
@@ -77,10 +76,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</span>
-          <span className="footer-available">
+          {/* <span className="footer-available">
             <span className="hero-badge-dot" aria-hidden="true" />
             Built with React + curiosity.
-          </span>
+          </span> */}
         </div>
       </div>
     </footer>

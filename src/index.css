@@ -1750,6 +1750,45 @@ input, textarea, select {
   transition: transform 0.2s ease;
 }
 
+.service-locations {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) 1.2fr;
+  gap: 28px;
+  align-items: center;
+  margin-top: 42px;
+  padding: 24px;
+  border: 1px solid rgba(184, 199, 255, 0.14);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(13, 21, 31, 0.82), rgba(9, 15, 23, 0.92));
+}
+
+.service-locations h3 {
+  margin: 10px 0 8px;
+  font-size: 1.3rem;
+}
+
+.service-locations p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.location-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.location-chip {
+  padding: 7px 10px;
+  border: 1px solid rgba(104, 225, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(104, 225, 255, 0.04);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
 .service-card:hover .service-card-cta {
   transform: translateX(4px);
 }
@@ -2624,15 +2663,16 @@ input, textarea, select {
   color: var(--text-muted);
 }
 
-.floating-contact {
+.floating-actions {
   position: fixed;
   right: 24px;
-  bottom: 24px;
-  z-index: 110;
+  bottom: 110px;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 14px;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .floating-action {
@@ -2649,7 +2689,8 @@ input, textarea, select {
 }
 
 .floating-action:hover {
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 18px 34px rgba(5, 9, 16, 0.4);
 }
 
 .floating-action--whatsapp {
@@ -2663,10 +2704,10 @@ input, textarea, select {
   border-color: rgba(104, 225, 255, 0.42);
 }
 
-.wa-mark {
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+.whatsapp-icon {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
 }
 
 .chatbot-panel {
@@ -3318,9 +3359,16 @@ input, textarea, select {
 }
 
 @media (max-width: 700px) {
-  .floating-contact {
+  .service-locations {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 28px;
+    padding: 18px;
+  }
+
+  .floating-actions {
     right: 16px;
-    bottom: 18px;
+    bottom: 95px;
   }
 
   .chatbot-panel {

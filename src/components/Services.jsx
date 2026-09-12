@@ -15,6 +15,7 @@ import {
 import SectionReveal from './SectionReveal'
 
 const filters = ['All', 'Engineering', 'AI', 'Digital', 'Growth']
+const serviceLocations = ['Indore', 'Bhopal', 'Ujjain', 'Jabalpur', 'Jaipur', 'Mandsaur', 'Neemuch', 'Ratlam', 'Raipur', 'Vadodara', 'Ahmedabad', 'Gurgaon', 'Delhi', 'Pune', 'Bangalore']
 
 const services = [
   {
@@ -203,7 +204,16 @@ export default function Services() {
             })}
           </div>
 
-          
+          <div className="service-locations" aria-labelledby="service-locations-title">
+            <div>
+              <span className="section-label">SERVICE AREA</span>
+              <h3 id="service-locations-title">Serving businesses across India</h3>
+              <p>I work with businesses, startups and teams across Indore and throughout India, including these cities and other locations.</p>
+            </div>
+            <div className="location-chip-grid">
+              {serviceLocations.map((location) => <span className="location-chip" key={location}>{location}</span>)}
+            </div>
+          </div>
         </SectionReveal>
       </div>
     </section>

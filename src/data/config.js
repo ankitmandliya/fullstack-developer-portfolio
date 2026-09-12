@@ -4,13 +4,13 @@
 export const siteConfig = {
   name: 'Ankit Mandliya',
   firstName: 'Ankit',
-  role: 'Digital Engineer',
-  location: 'Pune, India',
+  role: 'Full Stack Developer & Digital Engineering Professional',
+  location: 'Indore, India',
   tagline: 'Available for freelance projects',
   heroDescription:
-    'I build fast, modern websites and help businesses grow online through performance-focused digital marketing.',
+    'I build high-performance websites, web applications, AI-powered systems and digital solutions for businesses in Indore and across India.',
   aboutDescription:
-    'I build scalable digital experiences by combining engineering, intelligent automation and modern product thinking. My focus is turning complex business requirements into reliable software, AI-powered workflows and digital systems that are built to perform.',
+    'I am a full stack developer and digital engineering professional working with businesses, startups and teams across Indore and throughout India. I combine React, Laravel, PHP, APIs, databases, AI and automation to turn complex requirements into reliable digital systems.',
 
   email: 'mandliya.ankit@gmail.com',
   phone: '7415587271',

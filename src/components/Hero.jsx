@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Instagram, Mail, ArrowUpRight, ArrowRight, Sparkles, Code2, Layers3, Database, Cloud } from 'lucide-react'
+import { Linkedin, Mail, ArrowUpRight, ArrowRight, Sparkles, Code2, Layers3, Database, Cloud } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 const container = {
@@ -35,8 +35,8 @@ export default function Hero() {
             </motion.span>
 
             <motion.h1 className="hero-title" variants={item}>
-              I build
-              <span className="hero-title-role">scalable digital experiences.</span>
+              Full Stack Developer
+              <span className="hero-title-role">&amp; Digital Engineering Professional</span>
             </motion.h1>
 
             <motion.p className="hero-desc" variants={item}>
@@ -65,12 +65,12 @@ export default function Hero() {
               <a href={siteConfig.socials.linkedin} className="hero-social-link" aria-label="LinkedIn" target="_blank" rel="noreferrer">
                 <Linkedin size={17} />
               </a>
-              <a href={siteConfig.socials.github} className="hero-social-link" aria-label="GitHub" target="_blank" rel="noreferrer">
+              {/* <a href={siteConfig.socials.github} className="hero-social-link" aria-label="GitHub" target="_blank" rel="noreferrer">
                 <Github size={17} />
-              </a>
-              <a href={siteConfig.socials.instagram} className="hero-social-link" aria-label="Instagram" target="_blank" rel="noreferrer">
+              </a> */}
+              {/* <a href={siteConfig.socials.instagram} className="hero-social-link" aria-label="Instagram" target="_blank" rel="noreferrer">
                 <Instagram size={17} />
-              </a>
+              </a> */}
               <a href={siteConfig.socials.email} className="hero-social-link" aria-label="Email">
                 <Mail size={17} />
               </a>
