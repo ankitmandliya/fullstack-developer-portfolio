@@ -17,15 +17,15 @@ app.post('/api/enquiry', async (req, res) => {
     return res.status(400).json({ success: false, message: 'Please complete all required fields before submitting.' })
   }
 
-  const mailHost = process.env.MAIL_HOST
-  const mailPort = Number(process.env.MAIL_PORT || 587)
-  const mailUsername = process.env.MAIL_USERNAME
-  const mailPassword = process.env.MAIL_PASSWORD
+  const mailHost = process.env.BREVO_SMTP_HOST
+  const mailPort = Number(process.env.BREVO_SMTP_PORT || 587)
+  const mailUsername = process.env.BREVO_SMTP_USER
+  const mailPassword = process.env.BREVO_SMTP_PASSWORD
 
   if (!mailHost || !mailUsername || !mailPassword) {
     return res.status(503).json({
       success: false,
-      message: 'Email service is not configured yet. Add MAIL_HOST, MAIL_USERNAME, and MAIL_PASSWORD to enable enquiry delivery.',
+      message: 'Email service is not configured yet. Add the Brevo SMTP variables to enable enquiry delivery.',
     })
   }
 
@@ -35,6 +35,10 @@ app.post('/api/enquiry', async (req, res) => {
     host: mailHost,
     port: mailPort,
     secure: false,
+    requireTLS: true,
+    tls: {
+      rejectUnauthorized: true,
+    },
     auth: {
       user: mailUsername,
       pass: mailPassword,
@@ -71,7 +75,7 @@ app.post('/api/enquiry', async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: `${process.env.MAIL_FROM_NAME || 'Ankit Portfolio'} <${process.env.MAIL_FROM_ADDRESS || mailUsername}>`,
+      from: `${process.env.BREVO_FROM_NAME || 'Ankit Portfolio'} <${process.env.BREVO_FROM_EMAIL || mailUsername}>`,
       to: CONTACT_EMAIL,
       subject,
       text: [
