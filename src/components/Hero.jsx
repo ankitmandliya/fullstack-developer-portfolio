@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Instagram, Mail, ArrowUpRight } from 'lucide-react'
+import { Github, Linkedin, Instagram, Mail, ArrowUpRight, ArrowRight, Sparkles, Code2, Layers3, Database, Cloud } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 const container = {
@@ -10,19 +10,25 @@ const container = {
 }
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 }
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
 export default function Hero() {
+  const techBadges = ['React', 'Node.js', 'Laravel', 'Python', 'AWS', 'MySQL']
+
   return (
     <section id="home" className="hero">
+      <div className="hero-bg-grid" aria-hidden="true" />
+      <div className="hero-orb hero-orb-one" aria-hidden="true" />
+      <div className="hero-orb hero-orb-two" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
+
       <div className="container">
         <motion.div className="hero-grid" variants={container} initial="hidden" animate="show">
-          <div>
+          <div className="hero-copy">
             <motion.span className="hero-badge" variants={item}>
               <span className="hero-badge-dot" aria-hidden="true" />
               {siteConfig.tagline}
@@ -30,7 +36,7 @@ export default function Hero() {
 
             <motion.h1 className="hero-title" variants={item}>
               I build
-              <span className="hero-title-role">digital experiences.</span>
+              <span className="hero-title-role">scalable digital experiences.</span>
             </motion.h1>
 
             <motion.p className="hero-desc" variants={item}>
@@ -40,10 +46,19 @@ export default function Hero() {
             <motion.div className="hero-actions" variants={item}>
               <button type="button" className="btn btn-primary" onClick={() => scrollTo('projects')}>
                 View my work
+                <ArrowRight size={16} />
               </button>
               <button type="button" className="btn btn-outline" onClick={() => scrollTo('contact')}>
-                Let's work together
+                Let's connect
               </button>
+            </motion.div>
+
+            <motion.div className="hero-status" variants={item}>
+              <div className="status-pill"><span className="status-pulse" aria-hidden="true" /> Available for opportunities</div>
+              <div className="status-copy">
+                <strong>Currently building</strong>
+                <span>digital experiences and scalable apps.</span>
+              </div>
             </motion.div>
 
             <motion.div className="hero-socials" variants={item}>
@@ -63,7 +78,68 @@ export default function Hero() {
           </div>
 
           <motion.div className="hero-visual" variants={item}>
-            <DeveloperCore />
+            <div className="hero-visual-shell" role="img" aria-label="Developer technology ecosystem">
+              <div className="code-float code-float-one">
+                <Code2 size={14} />
+                <span>npm run build</span>
+                <em>✓ success</em>
+              </div>
+              <div className="code-float code-float-two">
+                <Sparkles size={14} />
+                <span>{'</>'}</span>
+                <em>live</em>
+              </div>
+
+              <div className="visual-panel">
+                <div className="panel-header">
+                  <span className="panel-dot" />
+                  <span className="panel-dot panel-dot-alt" />
+                  <span className="panel-dot panel-dot-muted" />
+                </div>
+                <div className="panel-body">
+                  <div className="panel-core">
+                    <span>BUILD</span>
+                  </div>
+                  <div className="panel-meta">
+                    <Layers3 size={14} />
+                    <span>System ready</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tech-cloud" aria-hidden="true">
+                {techBadges.map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    className={`tech-chip tech-chip-${index + 1}`}
+                    whileHover={{ y: -4, scale: 1.04 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+
+              <div className="status-window">
+                <div className="status-window-top">
+                  <span className="window-label">system.status</span>
+                  <span className="window-indicator" aria-hidden="true" />
+                </div>
+                <div className="status-window-body">
+                  <div className="status-window-item">
+                    <Cloud size={12} />
+                    <span>Cloud</span>
+                  </div>
+                  <div className="status-window-item">
+                    <Database size={12} />
+                    <span>Data</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hero-orbit hero-orbit-visual hero-orbit-one" aria-hidden="true" />
+              <div className="hero-orbit hero-orbit-visual hero-orbit-two" aria-hidden="true" />
+            </div>
           </motion.div>
         </motion.div>
       </div>

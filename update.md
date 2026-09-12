@@ -1,1402 +1,561 @@
-# Vian Pandya Portfolio — React 19 UI/UX Redesign Instructions
+## Home Page — Premium Motion, Graphics & Interactive Experience
 
-## PRIMARY OBJECTIVE
+Redesign and enhance the **Home Page** of my React 19 portfolio website to make it feel like a **premium, modern, highly interactive portfolio for a technology professional**.
 
-Upgrade my existing React 19 portfolio website.
+The current content and overall brand identity should be preserved, but significantly improve the **visual experience, animations, motion design, hover interactions, graphics, spacing, typography, and overall wow factor**.
 
-The visual and interaction reference is:
+The goal is:
 
-https://vian-pandya-portfolio.netlify.app/
+> **"This doesn't feel like a normal portfolio — it feels like an interactive tech product."**
 
-The goal is NOT to create a generic developer portfolio.
+### 1. Hero Section — Make It Visually Powerful
 
-The goal is to recreate the **same overall visual quality, interaction quality, animation language, spacing, color philosophy, typography hierarchy, section flow, and premium feel** of the reference portfolio while keeping my own:
+Create a visually impressive hero section immediately visible when the website loads.
 
-* Name
-* Profile
-* About information
-* Skills
-* Experience
-* Projects
-* Images
-* Resume
-* Social links
-* Contact information
-* Existing functionality
+Include:
 
-Do not copy the reference site's personal content.
-
-Use it as a **UI/UX and motion reference only**.
-
----
-
-# 1. IMPORTANT — INSPECT THE REFERENCE FIRST
-
-Before modifying my existing project, inspect:
-
-https://vian-pandya-portfolio.netlify.app/
-
-You must study the reference website as a visual system.
-
-Analyze:
-
-* Overall layout
-* Hero composition
-* Navbar
-* Background
-* Color palette
-* Typography
-* Font sizes
-* Font weights
-* Section spacing
-* Button design
-* Card design
-* Border treatment
-* Gradients
-* Shadows
-* Glow
-* Hover effects
-* Scroll behavior
-* Page transitions
-* Image transitions
-* Cursor behavior
-* Micro-interactions
-* Mobile layout
-* Responsive behavior
-* Project presentation
-* Contact section
-* Footer
-* Any unusual interaction
-* Any animation timing/easing
-* Any sticky/fixed elements
-* Any visual storytelling
-
-Do NOT guess these details if they can be inspected.
-
-The reference website is the source of truth for the visual direction.
-
----
-
-# 2. SECOND STEP — INSPECT MY CURRENT PROJECT
-
-Before changing code:
-
-1. Inspect the entire repository.
-2. Inspect `package.json`.
-3. Inspect `src/`.
-4. Inspect all React components.
-5. Inspect all CSS/Tailwind files.
-6. Inspect routing.
-7. Inspect assets.
-8. Inspect project data.
-9. Inspect existing animations.
-10. Inspect existing dependencies.
-11. Run the project locally.
-12. Understand the current architecture.
-
-Do not immediately replace the project.
-
-Do not delete working functionality.
-
----
-
-# 3. REDESIGN STRATEGY
-
-The implementation should follow this philosophy:
-
-```text
-REFERENCE WEBSITE
-       ↓
-VISUAL ANALYSIS
-       ↓
-DESIGN SYSTEM
-       ↓
-REUSABLE REACT COMPONENTS
-       ↓
-MOTION SYSTEM
-       ↓
-RESPONSIVE IMPLEMENTATION
-       ↓
-PERFORMANCE POLISH
-```
-
-The final website should feel inspired by the reference, but should NOT be a pixel-for-pixel copy.
-
----
-
-# 4. PRESERVE MY CONTENT
-
-Keep all valid existing content.
-
-Preserve:
-
-* Existing name
-* Existing bio
-* Existing profile image
-* Existing skills
-* Existing projects
-* Existing project images
-* Existing experience
-* Existing education
-* Existing GitHub links
-* Existing LinkedIn links
-* Existing email
-* Existing resume
-* Existing contact functionality
-* Existing routes
-
-Improve the presentation instead of replacing the content.
-
----
-
-# 5. NEVER INVENT PERSONAL INFORMATION
-
-Do not fabricate:
-
-* Experience years
-* Client names
-* Company names
-* Revenue
-* User counts
-* Project statistics
-* Awards
-* Certifications
-* Testimonials
-* Job titles
-* Achievements
-
-If something is missing, preserve the current structure or use a clearly marked placeholder.
-
-Example:
-
-```text
-[ADD DESCRIPTION]
-```
-
-Never create fake achievements just to make the portfolio look impressive.
-
----
-
-# 6. VISUAL TARGET
-
-The final portfolio should feel:
-
-* Premium
-* Modern
-* Creative
-* Technical
-* Minimal but expressive
-* Smooth
-* Elegant
-* High-end
-* Interactive
-* Professional
-
-Avoid:
-
-* Generic Bootstrap layouts
-* Generic portfolio templates
-* Excessive cards
-* Excessive rounded corners
-* Random gradients
-* Excessive neon
-* Excessive animation
-* Cheap-looking glow
-* Gaming UI
-* Visual clutter
-
-The design should look like a portfolio created by a professional creative developer.
-
----
-
-# 7. COLOR SYSTEM
-
-First inspect the reference website and determine its actual dominant color relationships.
-
-Then create a centralized design system.
-
-Use CSS variables.
-
-Example structure:
-
-```css
-:root {
-  --background: #000;
-  --foreground: #fff;
-  --muted: #888;
-  --accent: #7c3aed;
-  --accent-secondary: #06b6d4;
-  --surface: rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.10);
-}
-```
-
-IMPORTANT:
-
-Do NOT blindly use these example values.
-
-Determine the reference site's actual visual palette first.
-
-Then adapt it to my portfolio.
-
-All colors should be centralized.
-
----
-
-# 8. TYPOGRAPHY
-
-Analyze the reference typography.
-
-Determine:
-
-* Font family
-* Heading weight
-* Body weight
-* Letter spacing
-* Line height
-* Hero font size
-* Section heading size
-* Paragraph size
-* Button text size
-* Navigation text size
-
-Implement a consistent typography scale.
-
-Use responsive typography.
-
-Example:
-
-```css
-font-size: clamp(3rem, 8vw, 8rem);
-```
-
-where appropriate.
-
-Typography should be one of the main visual elements.
-
----
-
-# 9. NAVBAR
-
-Recreate the reference site's navigation philosophy.
-
-Inspect:
-
-* Position
-* Width
-* Height
-* Background
-* Blur
-* Border
-* Active state
-* Hover state
-* Scroll behavior
-* Mobile behavior
-
-The navbar should feel integrated with the page rather than looking like a separate component.
-
-Use smooth transitions.
-
----
-
-# 10. HERO SECTION
-
-The Hero must be visually comparable in impact to the reference website.
-
-Use my actual content.
-
-The Hero should communicate:
-
-* Who I am
-* Full-stack developer identity
-* What I build
-* Main CTA
-* Secondary CTA
-
-The layout should follow the reference site's visual composition where appropriate.
-
-Do not create a generic:
-
-```text
-Hi, I'm John
-I am a developer
-```
-
-style hero.
-
-Make typography, spacing, visual hierarchy and motion feel premium.
-
----
-
-# 11. HERO ANIMATION
-
-Inspect the reference Hero carefully.
-
-Identify:
-
-* Entrance animation
-* Text animation
-* Image animation
-* Background animation
-* Floating elements
-* Cursor interaction
-* CTA interaction
-* Scroll indicator
-* Parallax
-* Blur
-* Scale
-* Opacity
-* Transform
-* Timing
-* Easing
-
-Recreate the behavior using React-compatible techniques.
-
-Use the simplest performant implementation.
-
----
-
-# 12. BACKGROUND
-
-Inspect the reference background.
-
-If it uses:
-
-* gradient
-* glow
-* particles
-* grid
-* noise
-* animated blobs
-* lines
-* SVG
-* canvas
-* image layers
-
-recreate the same visual language.
-
-Do not automatically use Three.js.
-
-Prefer:
-
-1. CSS
-2. SVG
-3. Canvas
-4. Motion
-5. WebGL only when genuinely required
-
----
-
-# 13. CUSTOM CURSOR
-
-If the reference website uses a custom cursor, reproduce its interaction model.
-
-Inspect:
-
-* Cursor size
-* Outer ring
-* Hover behavior
-* Link behavior
-* Button behavior
-* Project behavior
-* Movement smoothness
-* Blend mode
-* Color
-* Scaling
-
-Important:
-
-Custom cursor must not cause scroll lag.
-
-Disable it on:
-
-* Touch devices
-* Mobile
-* Reduced-motion mode
-
----
-
-# 14. ABOUT SECTION
-
-Use the reference site's section rhythm.
-
-Do not simply create a standard About card.
+* Strong headline introducing me as a technology professional.
+* Short professional description.
+* Primary CTA such as "View My Work"
+* Secondary CTA such as "Let's Connect"
+* Existing profile/portfolio content should remain relevant.
+* Add animated visual elements around the hero content.
 
 Use:
 
-* Strong typography
-* Editorial layout
-* Whitespace
-* Image treatment
-* Scroll reveal
-* Visual hierarchy
+* Animated gradient backgrounds.
+* Large blurred gradient blobs.
+* Subtle floating particles.
+* Grid/dot background pattern.
+* Moving light streaks.
+* Soft glow effects.
+* Animated borders.
+* Gradient text for selected keywords.
+* Subtle glassmorphism where appropriate.
 
-Preserve my actual biography.
+Do NOT make the hero look overcrowded.
 
-If the reference uses a particular reveal effect, recreate the effect.
+The design should remain professional while being visually exciting.
 
 ---
 
-# 15. SKILLS SECTION
+### 2. Add Tech-Oriented Animated Graphics
 
-Use the reference website's approach to displaying skills.
+Because this is a portfolio of a tech professional, add visual elements that communicate technology.
 
-Avoid a generic:
+Possible elements:
+
+* Floating code snippets.
+* Terminal-style floating card.
+* Animated brackets such as `{ }`, `< />`, `01`, `</>`.
+* Small floating technology badges.
+* Animated nodes and connecting lines.
+* Abstract circuit-board patterns.
+* Developer/AI/cloud/database-inspired graphics.
+* Floating UI windows.
+* Small animated status indicators.
+* Rotating geometric shapes.
+
+These elements should move subtly in the background rather than distracting from the main content.
+
+Example visual concept:
 
 ```text
-React
-Node
-PHP
-Laravel
-MySQL
-Docker
+                 < CODE />
+                    ✦
+        ┌─────────────────────┐
+        │  npm run build      │
+        │  ✓ Success          │
+        └─────────────────────┘
+
+      ●────────●────────●
+       \       │       /
+        \      │      /
+             TECH
 ```
 
-grid.
-
-Make the skills visually interactive.
-
-Possible interactions:
-
-* Hover
-* Glow
-* Scale
-* Tooltip
-* Icon animation
-* Reveal
-* Horizontal movement
-* Marquee
-* Stack interaction
-
-Only use the technologies that actually exist in my current portfolio.
+Keep these graphics abstract and premium rather than cartoonish.
 
 ---
 
-# 16. PROJECT SECTION
+### 3. Mouse Interaction
 
-This is a major priority.
-
-Analyze the reference project's:
-
-* Card size
-* Image ratio
-* Typography
-* Project title
-* Description
-* Tags
-* Buttons
-* Hover behavior
-* Image movement
-* Cursor interaction
-* Spacing
-* Grid
-* Horizontal layout
-* Vertical layout
-* Scroll behavior
-
-Then recreate the same QUALITY of interaction for my projects.
-
-Do not use a generic card grid unless the reference clearly does so.
-
----
-
-# 17. PROJECT HOVER EXPERIENCE
-
-When hovering a project, inspect and recreate the reference interaction.
-
-Possible effects:
-
-* Image zoom
-* Image pan
-* Card movement
-* Cursor-following image
-* Overlay
-* Text reveal
-* Border glow
-* Scale
-* Blur
-* Parallax
-* Project title movement
-* Arrow animation
-
-The animation should feel smooth and intentional.
-
----
-
-# 18. PROJECT IMAGE EFFECTS
-
-If the reference uses image masking/reveal effects, recreate them.
-
-Preferred techniques:
-
-```text
-clip-path
-transform
-scale
-opacity
-filter
-mask-image
-```
-
-Avoid expensive DOM effects when CSS can achieve the same result.
-
----
-
-# 19. EXPERIENCE SECTION
-
-Inspect how the reference handles chronology and information.
-
-If the reference uses:
-
-* Timeline
-* Sticky content
-* Horizontal scrolling
-* Cards
-* Text reveal
-* Progress indicators
-
-use a similar interaction model.
-
-Preserve my actual experience data.
-
----
-
-# 20. FULL-STACK DEVELOPER IDENTITY
-
-The portfolio should clearly communicate that I am not only a frontend developer.
-
-Show the relationship between:
-
-```text
-Frontend
-   ↓
-API
-   ↓
-Backend
-   ↓
-Database
-   ↓
-Deployment
-```
-
-Use an elegant visual treatment.
-
-Do not make this look like a technical diagram from documentation.
-
-It should feel like part of the portfolio design.
-
----
-
-# 21. ARCHITECTURE INTERACTION
-
-Create an optional visual section demonstrating how I think about applications.
-
-Example:
-
-```text
-USER
- ↓
-REACT
- ↓
-API
- ↓
-BACKEND
- ↓
-DATABASE
- ↓
-DEPLOYMENT
-```
-
-Animate the flow.
-
-When hovering a layer:
-
-* Highlight the node
-* Highlight connected nodes
-* Display relevant technology
-* Animate the connection
-
-Only use actual technologies from my portfolio.
-
----
-
-# 22. CONTACT SECTION
-
-Match the reference site's final CTA experience.
-
-Do not create a boring form-only ending.
-
-Create a strong final message.
-
-Example:
-
-```text
-LET'S BUILD
-SOMETHING
-GREAT.
-```
-
-Then:
-
-* Email
-* LinkedIn
-* GitHub
-* Resume
-* Contact form if existing
-
-Use my actual information.
-
----
-
-# 23. FOOTER
-
-Analyze the reference footer.
-
-Match:
-
-* Spacing
-* Typography
-* Links
-* Social icons
-* Background
-* Border
-* Animation
-* Back-to-top interaction
-
-Keep it minimal.
-
----
-
-# 24. SCROLL ANIMATION SYSTEM
-
-This is extremely important.
-
-Do not randomly animate every element.
-
-Create a consistent animation language.
-
-Use:
-
-* Fade
-* Slide
-* Scale
-* Blur
-* Clip-path
-* Mask
-* Stagger
-* Parallax
-
-Animation should have consistent timing.
-
-Example:
-
-```text
-Fast interaction:
-150–250ms
-
-Normal transition:
-300–500ms
-
-Large reveal:
-600–1000ms
-```
-
-These are starting points only.
-
-Use the reference site's actual feel as the target.
-
----
-
-# 25. EASING
-
-Animations should not feel linear.
-
-Prefer natural easing.
+Add interactive mouse-based effects.
 
 Examples:
 
+* Hero background reacts subtly to mouse movement.
+* Gradient glow follows the cursor.
+* Floating elements have subtle parallax movement.
+* Cards slightly respond to cursor position.
+* Interactive spotlight effect follows the mouse.
+* Background particles react subtly to cursor movement.
+
+The movement should be smooth and lightweight.
+
+Avoid excessive movement that could make the page uncomfortable.
+
+---
+
+### 4. Premium Hover Effects
+
+Add high-quality hover interactions throughout the Home Page.
+
+Buttons:
+
+* Gradient background animation.
+* Subtle scale effect.
+* Glow on hover.
+* Arrow/icon moves slightly.
+* Smooth transition.
+
+Project cards:
+
+* Slight lift.
+* Image zoom.
+* Gradient overlay.
+* Border glow.
+* Content moves subtly.
+* Add a small "View Project →" interaction.
+
+Technology/skill cards:
+
+* Icon animation.
+* Gradient border.
+* Subtle rotation or floating effect.
+* Background glow.
+
+Social icons:
+
+* Scale slightly.
+* Rotate very subtly.
+* Glow effect.
+* Smooth color transition.
+
+Use professional micro-interactions rather than generic CSS hover effects.
+
+---
+
+### 5. Scroll Animations
+
+Add polished scroll-based animations across the Home Page.
+
+Elements should animate into view using:
+
+* Fade-in.
+* Slide-up.
+* Slight scale.
+* Blur-to-sharp.
+* Staggered animations.
+
+For example:
+
 ```text
-ease-out
-ease-in-out
-cubic-bezier(...)
-spring
+Heading
+   ↓
+Description
+   ↓
+Buttons
+   ↓
+Technology badges
 ```
 
-Use spring animation where appropriate.
+Each element should appear with a slight delay.
 
-Avoid everything moving at the same speed.
+Do not animate everything simultaneously.
+
+Use scroll-triggered animations only where they improve the visual hierarchy.
 
 ---
 
-# 26. SCROLL-BASED STORYTELLING
+### 6. Add an Animated "Tech Stack" Visual
 
-If the reference website uses scroll choreography, reproduce the concept.
+Create a visually attractive technology section.
 
-Possible pattern:
+Instead of simply showing a list of technologies, create interactive technology cards.
+
+Example:
 
 ```text
-SCROLL
-  ↓
-TEXT CHANGES
-  ↓
-IMAGE MOVES
-  ↓
-BACKGROUND CHANGES
-  ↓
-NEXT SECTION
+     React        Laravel       Node.js
+
+       ◉             ◉             ◉
+
+    Python         Docker        MySQL
 ```
 
-Use scroll position intelligently.
+Cards should:
 
-Do not hijack native scrolling unless the reference clearly requires it.
+* Have subtle glass/gradient backgrounds.
+* Animate on hover.
+* Show technology icons.
+* Have animated gradient borders.
+* Slightly float when hovered.
 
-Normal browser scrolling must remain comfortable.
+If appropriate, add an animated marquee:
 
----
+```text
+React  •  Laravel  •  PHP  •  Python  •  Node.js  •  Docker  •  MySQL
+```
 
-# 27. SMOOTH SCROLLING
-
-If the reference uses smooth scrolling, implement it carefully.
-
-Do NOT make scrolling feel slow.
-
-Avoid the common mistake of forcing scroll inertia so aggressively that the website feels laggy.
-
-The user should remain in control.
+The marquee should move smoothly and continuously.
 
 ---
 
-# 28. MOBILE EXPERIENCE
+### 7. Add a "Currently Building" / Status Card
 
-Do NOT simply shrink the desktop version.
+Add a small interactive developer-style card somewhere in the hero or below it.
 
-Inspect the reference mobile experience.
+Example:
 
-Determine:
+```text
+┌──────────────────────────────────┐
+│  ● AVAILABLE FOR OPPORTUNITIES   │
+│                                  │
+│  Currently building              │
+│  digital experiences &            │
+│  scalable applications.           │
+│                                  │
+│  <system.status />               │
+└──────────────────────────────────┘
+```
 
-* Navigation
-* Hero
-* Typography
-* Project layout
-* Images
-* Animations
-* Touch behavior
-* Section spacing
+Add subtle blinking status animation.
 
-Then create an intentional mobile experience.
+This should feel like a developer dashboard element.
 
 ---
 
-# 29. TOUCH INTERACTIONS
+### 8. Add Animated Background
 
-Hover-only interactions must have alternatives.
+Create a premium animated background.
+
+Use a combination of:
+
+* Gradient mesh.
+* Radial gradients.
+* Subtle noise texture if possible.
+* Dot/grid pattern.
+* Floating particles.
+* Soft glowing blobs.
+* Thin animated lines.
+
+The background should have depth.
+
+Avoid using a simple static gradient.
+
+Recommended visual direction:
+
+**Dark premium background + vibrant cyan/purple/blue/pink/green accents.**
+
+The colorful elements should contrast against the darker base.
+
+---
+
+### 9. Add Section Transitions
+
+Make transitions between Home Page sections visually interesting.
+
+Examples:
+
+* Gradient divider.
+* Animated horizontal line.
+* Moving glow.
+* Curved SVG transition.
+* Particle transition.
+* Subtle wave.
+
+Avoid abrupt section changes.
+
+---
+
+### 10. Add Interactive Project Preview
+
+If projects are already present on the Home Page, improve their presentation.
+
+Project cards should include:
+
+* Project image/preview.
+* Project title.
+* Short description.
+* Technologies used.
+* GitHub/demo links.
+* Hover preview.
+* Animated gradient border.
+
+On hover:
+
+```text
+Normal
+   ↓
+Card lifts
+   ↓
+Image zooms slightly
+   ↓
+Gradient overlay appears
+   ↓
+Buttons become visible
+```
+
+Keep it smooth and professional.
+
+---
+
+### 11. Add 3D / Depth Effects
+
+Introduce subtle depth without making the website heavy.
+
+Possible effects:
+
+* Perspective cards.
+* 3D tilt on hover.
+* Floating elements.
+* Layered shadows.
+* Glassmorphism.
+* Depth-based parallax.
+
+For example, project cards can slightly tilt based on cursor position.
+
+Do NOT overuse 3D.
+
+The website should still feel fast and professional.
+
+---
+
+### 12. Typography
+
+Improve typography hierarchy.
+
+Use:
+
+* Large bold hero typography.
+* Gradient-highlighted keywords.
+* Strong section headings.
+* Comfortable line height.
+* Clear body text.
+
+Example:
+
+```text
+BUILDING
+DIGITAL
+EXPERIENCES.
+```
+
+or:
+
+```text
+I build
+scalable digital
+experiences.
+```
+
+Use typography as a major visual element.
+
+---
+
+### 13. Color System
+
+Make the portfolio more colorful while keeping it professional.
+
+Recommended palette direction:
+
+* Deep black / dark navy background.
+* Electric blue.
+* Cyan.
+* Purple.
+* Magenta.
+* Violet.
+* Occasional green accent.
+
+Use gradients intelligently.
+
+Example:
+
+```css
+linear-gradient(
+  135deg,
+  #00f5ff,
+  #6366f1,
+  #a855f7,
+  #ec4899
+)
+```
+
+Do not apply bright colors everywhere.
+
+Use them primarily for:
+
+* Highlights.
+* Borders.
+* Buttons.
+* Icons.
+* Graphics.
+* Hover states.
+* Background glows.
+
+---
+
+### 14. Navbar Interaction
+
+Make the navbar feel premium.
+
+Add:
+
+* Transparent/glass background initially.
+* On scroll → slightly blurred background.
+* Smooth shadow/glow.
+* Active navigation indicator.
+* Hover underline animation.
+* Smooth transitions.
+
+The navbar should remain clean and minimal.
+
+---
+
+### 15. Loading Animation
+
+Create a short premium loading animation if the application currently has no loader.
+
+Possible concept:
+
+```text
+< / >
+     SHIVOM
+     ──────
+     INITIALIZING...
+```
+
+Use a very short animation.
+
+Do NOT create a long loading screen.
+
+---
+
+### 16. Performance Requirements
+
+This is extremely important.
+
+Animations must be:
+
+* Smooth.
+* GPU-friendly.
+* Optimized.
+* Responsive.
+* Lightweight.
+
+Prefer:
+
+* CSS transforms.
+* CSS opacity.
+* requestAnimationFrame when necessary.
+* Framer Motion if already installed.
+* Intersection Observer for scroll animations.
+
+Avoid unnecessarily expensive effects.
+
+Do not introduce huge animation libraries unless required.
+
+---
+
+### 17. Responsive Design
+
+The entire experience must work beautifully on:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
 
 On mobile:
 
-* Tap
-* Scroll
-* Press
-* Expand
-* Reveal
+* Reduce particle count.
+* Reduce large decorative elements.
+* Disable expensive mouse-follow effects.
+* Keep animations subtle.
+* Maintain readable typography.
+* Ensure buttons remain easily tappable.
+* Prevent horizontal scrolling.
 
-Do not depend on mouse movement.
-
----
-
-# 30. RESPONSIVE BREAKPOINTS
-
-Test at:
-
-```text
-320px
-375px
-390px
-430px
-768px
-1024px
-1280px
-1440px
-1920px
-```
-
-No horizontal overflow.
-
-No clipped text.
-
-No broken animation.
-
-No overlapping sections.
+The mobile version should feel intentionally designed, not simply compressed.
 
 ---
 
-# 31. ANIMATION TECHNOLOGY
+### 18. Accessibility
 
-First inspect existing dependencies.
-
-If already installed, reuse appropriate libraries.
-
-Preferred:
-
-* Motion / Framer Motion
-* GSAP
-* CSS
-* SVG
-* Canvas
-
-Use GSAP for complex timelines only.
-
-Use Three.js only when required.
-
-Do not install multiple libraries for identical functionality.
-
----
-
-# 32. PERFORMANCE
-
-The website must remain fast.
-
-Requirements:
-
-* Lazy-load images
-* Optimize images
-* Avoid layout thrashing
-* Use transforms
-* Use opacity
-* Use requestAnimationFrame
-* Cleanup animation loops
-* Cleanup event listeners
-* Use IntersectionObserver
-* Pause offscreen animation
-* Reduce animation on mobile
-* Avoid unnecessary re-renders
-
-Do not sacrifice performance for visual effects.
-
----
-
-# 33. REDUCED MOTION
-
-Implement:
+Respect:
 
 ```css
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+@media (prefers-reduced-motion: reduce)
 ```
 
-Animations should gracefully degrade.
+When reduced motion is enabled:
 
----
-
-# 34. ACCESSIBILITY
+* Disable unnecessary animations.
+* Disable parallax.
+* Disable cursor-follow effects.
+* Keep simple fade transitions or no animation.
 
 Maintain:
 
-* Semantic HTML
-* Correct heading hierarchy
-* Keyboard navigation
-* Visible focus states
-* Accessible buttons
-* Accessible forms
-* Alt text
-* Good contrast
-* Reduced motion
-
-Do not sacrifice accessibility for aesthetics.
+* Good contrast.
+* Keyboard accessibility.
+* Visible focus states.
+* Semantic HTML.
 
 ---
 
-# 35. COMPONENT ARCHITECTURE
+### 19. Overall Visual Direction
 
-Keep the implementation modular.
+The final design should feel inspired by the quality of modern technology/product websites such as:
 
-Suggested structure:
+* Linear
+* Vercel
+* Stripe
+* Framer
+* Raycast
+* Apple
 
-```text
-src/
-├── components/
-│   ├── Navbar.jsx
-│   ├── Hero.jsx
-│   ├── About.jsx
-│   ├── Skills.jsx
-│   ├── Projects.jsx
-│   ├── ProjectCard.jsx
-│   ├── Experience.jsx
-│   ├── Architecture.jsx
-│   ├── Contact.jsx
-│   ├── Footer.jsx
-│   ├── CustomCursor.jsx
-│   └── Background.jsx
-│
-├── hooks/
-│   ├── useMousePosition.js
-│   ├── useScrollProgress.js
-│   └── useReducedMotion.js
-│
-├── data/
-│   ├── projects.js
-│   ├── skills.js
-│   └── experience.js
-│
-├── assets/
-│
-├── App.jsx
-├── main.jsx
-└── index.css
-```
+But DO NOT copy their designs.
 
-Adapt this to the existing architecture.
+Create an original visual identity for this portfolio.
 
-Do not force a restructure if the current project already has a clean architecture.
+The result should feel:
+
+**Modern + Futuristic + Colorful + Premium + Technical + Interactive + Professional**
+
+Avoid:
+
+* Generic portfolio templates.
+* Excessive glassmorphism.
+* Excessive gradients.
+* Excessive animations.
+* Cartoonish graphics.
+* Huge unnecessary 3D objects.
+* Slow page performance.
+* Random decorative elements with no visual purpose.
 
 ---
 
-# 36. DATA-DRIVEN CONTENT
+### 20. Important Implementation Rule
 
-Use data arrays instead of duplicated JSX.
+Before changing the UI:
 
-Example:
+1. Inspect the existing React project.
+2. Understand the current Home Page structure.
+3. Preserve existing content, sections, links, routes, and functionality.
+4. Do not remove working functionality.
+5. Reuse existing components where possible.
+6. Only create new components when necessary.
+7. Keep the code clean and modular.
+8. Ensure there are no console errors.
+9. Ensure the production build succeeds.
+10. Ensure all animations work correctly on desktop and mobile.
 
-```js
-const projects = [
-  {
-    title: "Project Name",
-    description: "Real project description",
-    technologies: ["React", "Laravel", "MySQL"],
-    image: "/images/project.jpg",
-    github: "REAL_GITHUB_URL",
-    live: "REAL_LIVE_URL"
-  }
-];
-```
+Most importantly:
 
-Use actual project information.
+**Do not just add random animations. Build a cohesive motion-design system where every animation has a purpose.**
 
----
+The final Home Page should immediately communicate:
 
-# 37. MICRO-INTERACTIONS
-
-Inspect the reference and reproduce its interaction quality.
-
-Important areas:
-
-### Buttons
-
-* Hover
-* Press
-* Arrow movement
-* Scale
-* Glow
-
-### Navigation
-
-* Active indicator
-* Hover underline
-* Section detection
-
-### Images
-
-* Zoom
-* Pan
-* Reveal
-
-### Cards
-
-* Lift
-* Glow
-* Border movement
-
-### Icons
-
-* Rotation
-* Scale
-* Motion
-
-Every interaction must feel intentional.
-
----
-
-# 38. CURSOR-FOLLOWING EFFECT
-
-If the reference has cursor-following effects, recreate them carefully.
-
-Use CSS variables:
-
-```css
---mouse-x
---mouse-y
-```
-
-Example:
-
-```css
-background:
-radial-gradient(
-  circle at var(--mouse-x) var(--mouse-y),
-  rgba(255,255,255,0.08),
-  transparent 25%
-);
-```
-
-Avoid expensive React state updates on every mouse event.
-
-Prefer direct DOM/CSS variable updates or throttled updates.
-
----
-
-# 39. IMAGE PERFORMANCE
-
-For every project image:
-
-* Use appropriate dimensions
-* Avoid unnecessarily huge images
-* Use lazy loading where appropriate
-* Use modern formats
-* Provide alt text
-
-Do not preload every project image.
-
----
-
-# 40. SEO
-
-Preserve or improve:
-
-* Title
-* Meta description
-* Open Graph
-* Favicon
-* Semantic HTML
-* Heading structure
-
-Use actual personal information.
-
----
-
-# 41. NO GENERIC TEMPLATE BEHAVIOR
-
-Do NOT produce something that looks like:
-
-```text
-Navbar
-Hero
-About Card
-Skills Grid
-Projects Grid
-Experience Cards
-Contact Form
-Footer
-```
-
-with no visual storytelling.
-
-The reference website should influence:
-
-* composition
-* rhythm
-* spacing
-* motion
-* interaction
-* visual hierarchy
-
----
-
-# 42. NO UNNECESSARY FEATURES
-
-Do not add:
-
-* Random 3D objects
-* Random particles
-* Random terminal
-* Random music
-* Random cursor effects
-* Random loading screens
-
-unless they fit the visual language of the reference.
-
-The objective is:
-
-```text
-REFERENCE QUALITY
-+
-MY CONTENT
-+
-MY PERSONAL BRAND
-```
-
-Not:
-
-```text
-EVERY ANIMATION POSSIBLE
-```
-
----
-
-# 43. FINAL VISUAL QUALITY
-
-The finished site should pass this test:
-
-### First impression
-
-The visitor should immediately feel that the website is professionally designed.
-
-### Interaction
-
-Hovering and scrolling should feel smooth.
-
-### Content
-
-My technical experience should be easy to understand.
-
-### Projects
-
-My work should be the visual centerpiece.
-
-### Mobile
-
-The website should feel intentionally designed, not merely responsive.
-
-### Performance
-
-Animation should never make the site feel slow.
-
----
-
-# 44. TESTING
-
-After implementation run:
-
-```bash
-npm run dev
-```
-
-Then inspect:
-
-* Browser console
-* Network requests
-* Broken images
-* React warnings
-* Layout overflow
-* Animation performance
-
-Then run:
-
-```bash
-npm run build
-```
-
-Fix all build errors.
-
----
-
-# 45. VISUAL QA CHECKLIST
-
-## Desktop
-
-* [ ] Navbar matches reference quality
-* [ ] Hero matches reference visual language
-* [ ] Typography is polished
-* [ ] Color palette is consistent
-* [ ] Background feels intentional
-* [ ] Animations are smooth
-* [ ] Cursor works
-* [ ] Project interactions work
-* [ ] Sections transition naturally
-* [ ] Contact section is strong
-* [ ] Footer is polished
-
-## Tablet
-
-* [ ] No horizontal overflow
-* [ ] Typography scales correctly
-* [ ] Images remain proportional
-* [ ] Animations remain smooth
-
-## Mobile
-
-* [ ] Navigation works
-* [ ] No horizontal overflow
-* [ ] Hero is readable
-* [ ] Buttons are easy to tap
-* [ ] Project cards work
-* [ ] Animations are simplified
-* [ ] No hover-only functionality
-* [ ] Text does not overflow
-
----
-
-# 46. IMPORTANT — ITERATIVE IMPLEMENTATION
-
-Do not modify the entire website in one giant change.
-
-Implement in stages:
-
-## Stage 1
-
-Inspect existing project.
-
-## Stage 2
-
-Create the new design system.
-
-## Stage 3
-
-Redesign Navbar + Hero.
-
-## Stage 4
-
-Redesign About + Skills.
-
-## Stage 5
-
-Redesign Projects.
-
-## Stage 6
-
-Redesign Experience.
-
-## Stage 7
-
-Redesign Contact + Footer.
-
-## Stage 8
-
-Add global animation polish.
-
-## Stage 9
-
-Responsive optimization.
-
-## Stage 10
-
-Performance and accessibility.
-
-## Stage 11
-
-Final visual QA.
-
----
-
-# 47. IMPORTANT CODEX BEHAVIOR
-
-When making changes:
-
-1. Inspect before editing.
-2. Reuse existing components when useful.
-3. Reuse existing content.
-4. Reuse existing dependencies when possible.
-5. Do not delete files without understanding them.
-6. Do not invent personal information.
-7. Do not break working functionality.
-8. Keep components reusable.
-9. Keep animations performant.
-10. Test after major changes.
-
----
-
-# 48. REFERENCE WEBSITE RULE
-
-The reference website:
-
-https://vian-pandya-portfolio.netlify.app/
-
-is the primary visual reference.
-
-Before implementing each major section, ask:
-
-```text
-What is the reference doing visually?
-
-What is the reference doing interactively?
-
-How does the reference transition into the next section?
-
-What makes the interaction feel premium?
-
-How can the same design principle be applied to my content?
-```
-
-Do not blindly copy markup.
-
-Recreate the design principles.
-
----
-
-# 49. ORIGINALITY RULE
-
-The result should be:
-
-```text
-REFERENCE WEBSITE
-        +
-MY PERSONAL CONTENT
-        +
-MY FULL-STACK IDENTITY
-        +
-BETTER COMPONENT ARCHITECTURE
-        +
-PERFORMANCE
-```
-
-It should NOT be:
-
-```text
-COPY OF REFERENCE WEBSITE
-```
-
-Keep my portfolio recognizable as my own brand.
-
----
-
-# 50. FINAL GOAL
-
-When someone visits the redesigned portfolio, the reaction should be:
-
-> "This is not a normal developer portfolio."
-
-Then:
-
-> "The animations are really polished."
-
-Then:
-
-> "The projects are impressive."
-
-And finally:
-
-> "This person clearly understands both engineering and UI/UX."
-
----
-
-# FINAL COMMAND
-
-Start by inspecting the current React 19 project.
-
-Then inspect the reference website:
-
-https://vian-pandya-portfolio.netlify.app/
-
-Build a visual and interaction analysis.
-
-Then implement the redesign incrementally.
-
-Do not replace the project with a generic template.
-
-Do not invent content.
-
-Do not sacrifice performance.
-
-Do not overuse animations.
-
-Match the reference's **quality, motion language, visual hierarchy, spacing, interaction philosophy, and overall UX**, while keeping my own content and identity.
-
-The final result should feel like a **premium creative full-stack developer portfolio**, not a template.
-
-## Build it carefully. Polish every interaction. Make every pixel intentional.
+> **"This person is a serious technology professional who understands modern engineering, design, and user experience."**
