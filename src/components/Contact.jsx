@@ -24,7 +24,7 @@ function validate(values) {
 export default function Contact() {
   const [values, setValues] = useState(initialForm)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | submitting | success
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
 
   const handleChange = (field) => (e) => {
     setValues((v) => ({ ...v, [field]: e.target.value }))
@@ -39,20 +39,33 @@ export default function Contact() {
 
     setStatus('submitting')
 
-    if (siteConfig.formEndpoint) {
-      try {
-        await fetch(siteConfig.formEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(values),
-        })
-      } catch {
-        // fall through to success state either way — see README for wiring notes
-      }
-    }
+    try {
+      const endpoint = siteConfig.formEndpoint || '/api/enquiry'
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          fullName: values.name.trim(),
+          email: values.email.trim(),
+          contactNumber: 'Submitted via contact form',
+          service: values.projectType,
+          otherService: values.projectType === 'Other' ? values.projectType : '',
+          budget: values.budget,
+          additionalMessage: values.message.trim(),
+        }),
+      })
+      const data = await response.json().catch(() => ({}))
 
-    setStatus('success')
-    setValues(initialForm)
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Unable to send your message right now.')
+      }
+
+      setStatus('success')
+      setValues(initialForm)
+    } catch (error) {
+      console.error('Contact form submission failed:', error)
+      setStatus('error')
+    }
   }
 
   return (
@@ -135,7 +148,13 @@ export default function Contact() {
 
               {status === 'success' && (
                 <div className="form-status form-status-success">
-                  Thanks — your message is in. I'll get back to you shortly.
+                  Thanks — your message was sent successfully. I'll get back to you shortly.
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="form-status form-status-error">
+                  We couldn't send your message right now. Please try again.
                 </div>
               )}
 

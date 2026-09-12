@@ -1,8 +1,11 @@
 import express from 'express'
 import nodemailer from 'nodemailer'
 import dotenv from 'dotenv'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-dotenv.config()
+const projectDirectory = dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: join(projectDirectory, '.env') })
 
 const app = express()
 const PORT = Number(process.env.PORT || 3001)

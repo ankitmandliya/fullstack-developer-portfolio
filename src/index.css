@@ -2658,6 +2658,11 @@ input, textarea, select {
   color: #3ddc84;
 }
 
+.form-status-error {
+  background: rgba(252, 165, 165, 0.1);
+  color: #fecaca;
+}
+
 .form-status-note {
   background: var(--surface-2);
   color: var(--text-muted);
