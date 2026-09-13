@@ -56,6 +56,16 @@ export const projects = [
     githubUrl: '#',
   },
   {
+    title: 'Multiservice - E-commerce Store',
+    description: 'Multiservice is a platform that offers a wide range of services for various needs, including home services, professional services, and more.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuamGH0W0XbSaIYSe3p-4YVJhlDAlw0Ro_qrkzjucZu4IIGUnxJKHOyCg&s=10',
+    alt: 'Multiservice e-commerce and digital marketing project',
+    technologies: ['Instagram', 'Google Ads', 'Meta Ads', 'SEO', 'WordPress', 'PHP', 'MySQL'],
+    category: 'Web Development',
+    liveUrl: 'https://multiservice-providerapp.netlify.app/',
+    githubUrl: '#',
+  },
+  {
     title: 'Giftlogy - E-commerce Store',
     description: 'Giftlogy is a gift shop that offers a wide range of products for various occasions, including birthdays, anniversaries, and festivals.',
     image: 'https://scontent.cdninstagram.com/v/t51.82787-19/762864589_18101367779139167_5147947062117791106_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=109&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=KkIV3CCGBVQQ7kNvwE4zcdi&_nc_oc=AdrH2ax0chEnxPLi9VgMHDqnghOUsvDFsxWoR1xWqzjqL0uEkLTCwrytrBNWuDgtWKKSgi-Zj8cGcGNLwiB-K14Q&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=W3bEwNon164wpb9gh2lrmg&_nc_ss=7b289&oh=00_AQJqECrWKJa55uE6oZyeqdRIDqbzAqHkV08DpIk059tqdA&oe=6AAAE166',

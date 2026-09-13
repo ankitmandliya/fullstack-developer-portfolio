@@ -1972,6 +1972,11 @@ input, textarea, select {
   grid-template-columns: 1fr;
 }
 
+.projects-more {
+  display: flex;
+  margin: 28px auto 0;
+}
+
 @media (min-width: 700px) {
   .projects-grid {
     grid-template-columns: 1fr 1fr;

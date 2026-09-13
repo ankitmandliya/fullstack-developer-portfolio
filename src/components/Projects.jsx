@@ -6,9 +6,11 @@ import SectionReveal from './SectionReveal'
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [showAll, setShowAll] = useState(false)
 
   const filtered =
     activeCategory === 'All' ? projects : projects.filter((p) => p.category === activeCategory)
+  const visibleProjects = showAll ? filtered : filtered.slice(0, 6)
 
   return (
     <section id="projects" className="section">
@@ -25,7 +27,10 @@ export default function Projects() {
                 key={category}
                 type="button"
                 className={`filter-pill ${activeCategory === category ? 'is-active' : ''}`}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => {
+                  setActiveCategory(category)
+                  setShowAll(false)
+                }}
               >
                 {category}
               </button>
@@ -34,7 +39,7 @@ export default function Projects() {
 
           <motion.div className="projects-grid" layout>
             <AnimatePresence mode="popLayout">
-              {filtered.map((project) => (
+              {visibleProjects.map((project) => (
                 <motion.div
                   key={project.title}
                   layout
@@ -59,10 +64,16 @@ export default function Projects() {
                         e.currentTarget.nextSibling.style.display = 'flex'
                       }}
                     />
-                    <span className="project-media-overlay" aria-hidden="true">
+                    <a
+                      href={project.liveUrl}
+                      className="project-media-overlay"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`View ${project.title} project`}
+                    >
                       <span>View project</span>
                       <ArrowUpRight size={16} />
-                    </span>
+                    </a>
                     <span style={{ display: 'none', position: 'absolute', inset: 0, alignItems: 'center', justifyContent: 'center' }}>
                       {project.title}
                     </span>
@@ -89,6 +100,12 @@ export default function Projects() {
               ))}
             </AnimatePresence>
           </motion.div>
+
+          {filtered.length > 6 && (
+            <button type="button" className="btn btn-outline projects-more" onClick={() => setShowAll((current) => !current)}>
+              {showAll ? 'Show less' : 'View more'}
+            </button>
+          )}
 
           {filtered.length === 0 && <p className="projects-empty">No projects in this category yet.</p>}
         </SectionReveal>
