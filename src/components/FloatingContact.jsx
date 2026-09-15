@@ -150,26 +150,29 @@ export default function FloatingContact() {
         otherService: form.service === 'Other' ? form.otherService.trim() : '',
         budget: Number(form.budget),
         additionalMessage: form.additionalMessage.trim(),
+        _subject: "New enquiry from Ankit's portfolio chat",
+        _captcha: 'false',
       }
 
-      const response = await fetch('/api/enquiry', {
+      const response = await fetch('https://formsubmit.co/ajax/mandliya.ankit@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify(payload),
       })
 
       const data = await response.json().catch(() => ({}))
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || 'Unable to send the enquiry right now.')
+      if (!response.ok || (typeof data === 'object' && data.success === false)) {
+        throw new Error(data?.message || 'Unable to send the enquiry right now.')
       }
 
       setSubmitted(true)
     } catch (error) {
       console.error('Enquiry submission failed:', error)
-      setErrors({ submit: "We couldn't send your enquiry right now. Please try again." })
+      setErrors({ submit: 'Some technical issue occurred. Please contact Ankit via WhatsApp.' })
     } finally {
       setSubmitting(false)
     }
@@ -341,7 +344,16 @@ export default function FloatingContact() {
 
                 {errors.submit && (
                   <div className="chatbot-submit-error">
-                    <span className="chatbot-error chatbot-error--submit">{errors.submit}</span>
+                    <span className="chatbot-error chatbot-error--submit">
+                      {errors.submit.includes('WhatsApp') ? (
+                        <>
+                          Some technical issue occurred. Please contact Ankit via WhatsApp:{' '}
+                          <a href="https://wa.me/917415587271" target="_blank" rel="noreferrer">+91 7415587271</a>
+                        </>
+                      ) : (
+                        errors.submit
+                      )}
+                    </span>
                     <button type="button" className="chatbot-retry" onClick={handleSubmit} disabled={submitting}>
                       Try Again
                     </button>

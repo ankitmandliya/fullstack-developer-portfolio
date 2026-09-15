@@ -35,29 +35,38 @@ export default function Contact() {
     e.preventDefault()
     const nextErrors = validate(values)
     setErrors(nextErrors)
-    if (Object.keys(nextErrors).length > 0) return
+
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus('error')
+      return
+    }
 
     setStatus('submitting')
 
     try {
-      const endpoint = siteConfig.formEndpoint || '/api/enquiry'
-      const response = await fetch(endpoint, {
+      const payload = {
+        name: values.name.trim(),
+        email: values.email.trim(),
+        projectType: values.projectType,
+        budget: values.budget,
+        message: values.message.trim(),
+        _subject: "New project enquiry from Ankit's portfolio",
+        _captcha: 'false',
+      }
+
+      const response = await fetch('https://formsubmit.co/ajax/mandliya.ankit@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          fullName: values.name.trim(),
-          email: values.email.trim(),
-          contactNumber: 'Submitted via contact form',
-          service: values.projectType,
-          otherService: values.projectType === 'Other' ? values.projectType : '',
-          budget: values.budget,
-          additionalMessage: values.message.trim(),
-        }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
       })
+
       const data = await response.json().catch(() => ({}))
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || 'Unable to send your message right now.')
+      if (!response.ok || (typeof data === 'object' && data.success === false)) {
+        throw new Error(data?.message || 'Email submission failed.')
       }
 
       setStatus('success')
@@ -94,16 +103,19 @@ export default function Contact() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} noValidate>
+            <form action="https://formsubmit.co/mandliya.ankit@gmail.com" method="POST" onSubmit={handleSubmit} noValidate>
+              <input type="hidden" name="_subject" value="New project enquiry from Ankit's portfolio" />
+              <input type="hidden" name="_captcha" value="false" />
+
               <div className="form-row form-row-2">
                 <div className={`form-field ${errors.name ? 'has-error' : ''}`}>
                   <label htmlFor="name">Name</label>
-                  <input id="name" type="text" value={values.name} onChange={handleChange('name')} />
+                  <input id="name" name="name" type="text" value={values.name} onChange={handleChange('name')} required />
                   {errors.name && <div className="form-error">{errors.name}</div>}
                 </div>
                 <div className={`form-field ${errors.email ? 'has-error' : ''}`}>
                   <label htmlFor="email">Email</label>
-                  <input id="email" type="email" value={values.email} onChange={handleChange('email')} />
+                  <input id="email" name="email" type="email" value={values.email} onChange={handleChange('email')} required />
                   {errors.email && <div className="form-error">{errors.email}</div>}
                 </div>
               </div>
@@ -111,7 +123,7 @@ export default function Contact() {
               <div className="form-row form-row-2">
                 <div className={`form-field ${errors.projectType ? 'has-error' : ''}`}>
                   <label htmlFor="projectType">Project type</label>
-                  <select id="projectType" value={values.projectType} onChange={handleChange('projectType')}>
+                  <select id="projectType" name="projectType" value={values.projectType} onChange={handleChange('projectType')} required>
                     <option value="">Select one</option>
                     <option value="Web development">Web development</option>
                     <option value="Website redesign">Website redesign</option>
@@ -124,7 +136,7 @@ export default function Contact() {
                 </div>
                 <div className="form-field">
                   <label htmlFor="budget">Budget (optional)</label>
-                  <select id="budget" value={values.budget} onChange={handleChange('budget')}>
+                  <select id="budget" name="budget" value={values.budget} onChange={handleChange('budget')}>
                     <option value="">Select a range</option>
                     <option value="< 10000"> 10,000</option>
                     <option value="10000 – 50000"> 10,000 – 50,000</option>
@@ -137,7 +149,7 @@ export default function Contact() {
               <div className="form-row">
                 <div className={`form-field ${errors.message ? 'has-error' : ''}`}>
                   <label htmlFor="message">Message</label>
-                  <textarea id="message" value={values.message} onChange={handleChange('message')} />
+                  <textarea id="message" name="message" value={values.message} onChange={handleChange('message')} required />
                   {errors.message && <div className="form-error">{errors.message}</div>}
                 </div>
               </div>
@@ -154,11 +166,9 @@ export default function Contact() {
 
               {status === 'error' && (
                 <div className="form-status form-status-error">
-                  We couldn't send your message right now. Please try again.
+                  Some technical issue occurred. Please contact Ankit via WhatsApp: <a href="https://wa.me/917415587271" target="_blank" rel="noreferrer">+91 7415587271</a>
                 </div>
               )}
-
-              
             </form>
           </div>
         </div>

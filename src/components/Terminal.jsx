@@ -26,9 +26,10 @@ export default function Terminal() {
         <SectionReveal className="terminal-shell">
           <div className="terminal-heading"><span className="terminal-prompt">$</span><span>optional interface</span><span className="terminal-live">online</span></div>
           <div className="terminal-output">{output}</div>
-          <form className="terminal-form" onSubmit={runCommand}>
+          <form className="terminal-form" action="https://formsubmit.co/mandliya.ankit@gmail.com" method="POST" onSubmit={runCommand}>
+            <input type="hidden" name="_captcha" value="false" />
             <label htmlFor="terminal-command"><span className="terminal-prompt">$</span><span className="sr-only">Terminal command</span></label>
-            <input id="terminal-command" value={command} onChange={(event) => setCommand(event.target.value)} placeholder="type a command" autoComplete="off" />
+            <input id="terminal-command" name="terminal-command" value={command} onChange={(event) => setCommand(event.target.value)} placeholder="type a command" autoComplete="off" />
           </form>
         </SectionReveal>
       </div>

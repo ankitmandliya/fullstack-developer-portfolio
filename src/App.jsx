@@ -16,6 +16,7 @@ import CustomCursor from './components/CustomCursor'
 import CodeSection from './components/CodeSection'
 import Terminal from './components/Terminal'
 import FloatingContact from './components/FloatingContact'
+import Certifications from './components/Certifications'
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -49,6 +50,7 @@ export default function App() {
         <Skills />
         <Services />
         <Projects />
+        <Certifications />
         {/* <Experience /> */}
         {/* <Architecture /> */}
         <CodeSection />
