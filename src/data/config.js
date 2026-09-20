@@ -6,9 +6,9 @@ export const siteConfig = {
   firstName: 'Ankit',
   role: 'Full Stack Developer & Digital Engineering Professional',
   location: 'Indore, India',
-  tagline: 'Available for freelance projects',
+  tagline: 'Build. Automate. Grow.',
   heroDescription:
-    'I build high-performance websites, web applications, AI-powered systems and digital solutions for businesses in Indore and across India.',
+    'High-performance websites, custom software, and AI-driven automation — built as one connected system, not a pile of separate tools.',
   aboutDescription:
     'I am a full stack developer and digital engineering professional working with businesses, startups and teams across Indore and throughout India. I combine React, Laravel, PHP, APIs, databases, AI and automation to turn complex requirements into reliable digital systems.',
 
